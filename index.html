@@ -155,11 +155,11 @@
         ];
 
         const CHIBI_NUDGES = [
-          "🦁 rawrs: Let's knock out those exercises!",
-          "🐼 munches: A little power fitness makes a big smile!",
-          "🐯 pounces: Don't let our family streak break!",
-          "🐻 waves: High five! You can do your workout!",
-          "🐰 hops: Quick, fitness time! Our family bond is counting on you!"
+          "🦁 rawrs: Let's knock out those push ups!",
+          "🐼 munches: A little power push up makes a big smile!",
+          "🐯 pounces: Don't let our family push up streak break!",
+          "🐻 waves: High five! You can do your push ups!",
+          "🐰 hops: Quick, push up time! Our family bond is counting on you!"
         ];
 
         function App() {
@@ -207,6 +207,49 @@
             { id: 'bestie_leo', name: 'Leo (Best Friend)', avatar: '🐸', role: 'Friend', status: 'Online', streak: 4, completed: false },
             { id: 'aunt_sarah', name: 'Aunt Sarah', avatar: '🦄', role: 'Aunt', status: 'Offline', streak: 9, completed: true }
           ]);
+
+          // Helper to calculate visual streak progression tiers
+          const getStreakTier = (streak) => {
+            if (streak >= 20) return { label: 'Supernova', emoji: '☄️', color: 'bg-rose-500 text-white ring-2 ring-rose-300 animate-pulse font-black' };
+            if (streak >= 10) return { label: 'Lightning', emoji: '⚡', color: 'bg-purple-500 text-white font-bold' };
+            if (streak >= 5) return { label: 'Blaze', emoji: '🔥', color: 'bg-amber-400 text-slate-900 font-extrabold shadow-xs' };
+            return { label: 'Kindling', emoji: '🪵', color: 'bg-slate-200 text-slate-600' };
+          };
+
+          // Render horizontal progress loop of 7 mini-flames representing current weekly streak cycle
+          const renderStreakTrack = (streak) => {
+            const activeFlames = streak === 0 ? 0 : (streak % 7 === 0 ? 7 : streak % 7);
+            const loops = Math.floor(streak / 7);
+            
+            return (
+              <div className="flex flex-col items-start sm:items-end gap-1 mt-1">
+                <div className="flex items-center gap-1.5">
+                  {[...Array(7)].map((_, idx) => {
+                    const isLit = idx < activeFlames;
+                    return (
+                      <div 
+                        key={idx}
+                        title={`Day ${idx + 1} of streak week`}
+                        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
+                          isLit 
+                            ? 'bg-gradient-to-tr from-amber-400 to-orange-500 text-white shadow-md scale-110 animate-bounce' 
+                            : 'bg-slate-200 text-slate-400 opacity-40'
+                        }`}
+                        style={{ animationDelay: `${idx * 120}ms`, animationDuration: '2.5s' }}
+                      >
+                        🔥
+                      </div>
+                    );
+                  })}
+                </div>
+                {loops > 0 && (
+                  <span className="text-[9px] bg-gradient-to-r from-orange-500 to-rose-500 text-white px-2 py-0.5 rounded-full font-black uppercase tracking-wider scale-95 mt-0.5">
+                    {loops}x Week Loop Bonus! 🏆
+                  </span>
+                )}
+              </div>
+            );
+          };
 
           const addFriend = (newFriend) => {
             setFriendsList(prev => [...prev, newFriend]);
@@ -1060,39 +1103,56 @@
                         )}
                       </div>
 
-                      {/* Main Section: Clean, scrollable Friends List */}
+                      {/* Main Section: Clean, scrollable Friends List with detailed visual streak meters */}
                       <div className="space-y-3">
                         <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">My Friends List</h3>
-                        <div className="space-y-3 max-h-[350px] overflow-y-auto pr-1">
-                          {friendsList.map(p => (
-                            <div key={p.id} className="p-4 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-between hover:bg-slate-100/50 transition-all">
-                              <div className="flex items-center gap-3">
-                                <span className="text-4xl bg-white p-2 rounded-xl shadow-xs border border-slate-100">{p.avatar}</span>
-                                <div>
-                                  <h4 className="font-extrabold text-slate-700">{p.name}</h4>
-                                  <span className="text-xs bg-slate-200/60 text-slate-600 py-0.5 px-2 rounded-md font-bold uppercase tracking-wider">{p.role}</span>
+                        <div className="space-y-4 max-h-[380px] overflow-y-auto pr-1">
+                          {friendsList.map(p => {
+                            const tier = getStreakTier(p.streak);
+                            return (
+                              <div 
+                                key={p.id} 
+                                className="p-4 bg-slate-50 border border-slate-100 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-100/30 transition-all shadow-sm"
+                              >
+                                <div className="flex items-center gap-3.5">
+                                  <span className="text-4xl bg-white p-3 rounded-2xl shadow-xs border border-slate-200/60">{p.avatar}</span>
+                                  <div>
+                                    <div className="flex items-center gap-2">
+                                      <h4 className="font-extrabold text-slate-800 text-base leading-none">{p.name}</h4>
+                                      <span className="text-[10px] bg-slate-200/80 text-slate-600 py-0.5 px-2 rounded-md font-bold uppercase tracking-wider">{p.role}</span>
+                                    </div>
+                                    
+                                    {/* Progression tier pill */}
+                                    <div className="flex items-center gap-2 mt-2">
+                                      <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider flex items-center gap-1 ${tier.color}`}>
+                                        <span>{tier.emoji}</span>
+                                        <span>{tier.label} Tier</span>
+                                      </span>
+                                      <span className="text-xs font-black text-amber-600 flex items-center gap-0.5 bg-amber-100/60 px-2 py-0.5 rounded-md">
+                                        🔥 {p.streak} Day Streak
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className="flex flex-col items-start sm:items-end gap-1.5 border-t sm:border-t-0 border-slate-200/50 pt-3 sm:pt-0">
+                                  {/* Small status indicator */}
+                                  <div className="flex items-center gap-1.5 mb-1">
+                                    <span className={`w-2.5 h-2.5 rounded-full ${
+                                      p.completed ? 'bg-emerald-500 animate-pulse' : 
+                                      p.status === 'Online' ? 'bg-blue-500 animate-pulse' : 'bg-slate-400'
+                                    }`}></span>
+                                    <span className="text-xs font-bold text-slate-500">
+                                      {p.completed ? 'Completed today! 🎉' : p.status}
+                                    </span>
+                                  </div>
+
+                                  {/* Visual 7-Day Flame Track */}
+                                  {renderStreakTrack(p.streak)}
                                 </div>
                               </div>
-
-                              <div className="flex flex-col items-end gap-1.5">
-                                {/* Small status indicator */}
-                                <div className="flex items-center gap-1.5">
-                                  <span className={`w-2.5 h-2.5 rounded-full ${
-                                    p.completed ? 'bg-emerald-500 animate-pulse' : 
-                                    p.status === 'Online' ? 'bg-blue-500 animate-pulse' : 'bg-slate-400'
-                                  }`}></span>
-                                  <span className="text-[11px] font-bold text-slate-500">
-                                    {p.completed ? 'Completed today! 🎉' : p.status}
-                                  </span>
-                                </div>
-
-                                <div className="flex items-center gap-1 bg-amber-100/80 text-amber-800 font-extrabold px-2 py-0.5 rounded-lg text-xs">
-                                  <IconFlame />
-                                  <span>{p.streak} Days active</span>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
