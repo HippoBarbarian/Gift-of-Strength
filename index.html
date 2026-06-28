@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift of Strength - Family Fitness</title>
-    <!-- Tailwind CSS for vibrant, child-friendly styling -->
+    <!-- Tailwind CSS for modern utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- React and ReactDOM CDNs -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <!-- Babel CDN to compile JSX in the browser in real-time -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Custom styling to handle smooth scrollbars and clean transitions -->
     <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-        /* Custom scrollbar styling for the simulated logs */
+        /* Custom scrollbar styling for simulated logs */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -29,6 +28,14 @@
             background: #f59e0b;
             border-radius: 8px;
         }
+        /* Fade-in transition animations */
+        .fade-in {
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-amber-50">
@@ -36,12 +43,11 @@
     <!-- The DOM element where our React app will mount -->
     <div id="root"></div>
 
-    <!-- Inline SVG helper icons to keep the build entirely dependency-free -->
     <script type="text/babel">
+        // Custom SVG icons to eliminate third-party bundle dependency bugs
         const IconFlame = () => (
-            <svg className="w-5 h-5 inline text-amber-500 fill-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-5 h-5 text-amber-500 fill-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fillRule="evenodd" d="M12.963 2.285a.75.75 0 0 1 .166.75 8.25 8.25 0 0 0 10.518 9.53a.75.75 0 0 1 .945.945A10.003 10.003 0 0 1 12 21.75c-5.523 0-10-4.477-10-10a9.96 9.96 0 0 1 8.012-9.719.75.75 0 0 1 .951.254l.001.001ZM12 4.5A7.5 7.5 0 0 0 4.5 12a7.5 7.5 0 0 0 7.5 7.5 7.5 7.5 0 0 0 7.5-7.5c0-.462-.042-.914-.122-1.353A10.002 10.002 0 0 1 12 4.5Z" clipRule="evenodd" />
-                <path d="M15.75 12c0 .18-.013.357-.037.53a2.25 2.25 0 0 1-2.433 2.433 4.5 4.5 0 0 1-4.526-4.526 2.25 2.25 0 0 1 2.433-2.433c.173-.024.35-.037.53-.037a4.5 4.5 0 0 1 4.033 4.033Z" />
             </svg>
         );
 
@@ -57,21 +63,46 @@
             </svg>
         );
 
-        const IconCheck = () => (
-            <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-        );
-
-        const IconSend = () => (
-            <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-            </svg>
-        );
-
         const IconVolume = () => (
             <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+            </svg>
+        );
+
+        const IconArrowLeft = () => (
+            <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+        );
+
+        // Movement Exercise Icons
+        const PushUpIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+                <rect x="2" y="18" width="20" height="2" rx="1" fill="currentColor" />
+                <path d="M12 2v6" />
+            </svg>
+        );
+
+        const SquatIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 3h12a1 1 0 0 1 1 1v2a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V4a1 1 0 0 1 1-1z" />
+                <path d="M8 10v10M16 10v10" />
+            </svg>
+        );
+
+        const SitUpIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 19a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4" />
+                <circle cx="12" cy="7" r="4" />
+            </svg>
+        );
+
+        const LungeIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 4l-4 4 4 4" />
+                <path d="M5 20h14" />
+                <path d="M9 8h6M12 8v10" />
             </svg>
         );
 
@@ -84,7 +115,9 @@
             petName: 'Tango the Tiger',
             bgColor: 'from-orange-400 to-amber-500',
             borderColor: 'border-orange-400',
-            exercise: '20 Strong Push Ups',
+            exercise: 'Push Ups',
+            targetReps: 20,
+            repsDone: 0,
             completed: false,
             streak: 5,
             lastCompleted: null
@@ -97,7 +130,9 @@
             petName: 'Barnaby the Bear',
             bgColor: 'from-blue-400 to-cyan-500',
             borderColor: 'border-blue-400',
-            exercise: '10 Super-Kid Push Ups',
+            exercise: 'Push Ups',
+            targetReps: 10,
+            repsDone: 0,
             completed: false,
             streak: 3,
             lastCompleted: null
@@ -110,7 +145,9 @@
             petName: 'Penny the Panda',
             bgColor: 'from-purple-400 to-pink-500',
             borderColor: 'border-purple-400',
-            exercise: '15 Power Push Ups',
+            exercise: 'Push Ups',
+            targetReps: 15,
+            repsDone: 0,
             completed: false,
             streak: 12,
             lastCompleted: null
@@ -118,11 +155,11 @@
         ];
 
         const CHIBI_NUDGES = [
-          "🦁 rawrs: Let's do this!",
-          "🐼 munches: A little stretch makes a big smile!",
+          "🦁 rawrs: Let's knock out those exercises!",
+          "🐼 munches: A little power fitness makes a big smile!",
           "🐯 pounces: Don't let our family streak break!",
-          "🐻 waves: High five! You can do your push ups!",
-          "🐰 hops: Quick, jump in! Our streak is on the line!"
+          "🐻 waves: High five! You can do your workout!",
+          "🐰 hops: Quick, fitness time! Our family bond is counting on you!"
         ];
 
         function App() {
@@ -132,8 +169,17 @@
           });
           
           const [activeProfileId, setActiveProfileId] = React.useState('alex');
+          const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+          const [usernameInput, setUsernameInput] = React.useState("");
+          const [passwordInput, setPasswordInput] = React.useState("");
+          const [loginError, setLoginError] = React.useState("");
+          
+          // Navigation State: 'home', 'select_exercise', 'log', 'challenge', 'nudge', 'friends'
+          const [currentView, setCurrentView] = React.useState('home');
+          const [selectedExercise, setSelectedExercise] = React.useState('Push Ups');
+
           const [notifications, setNotifications] = React.useState([
-            { id: 1, text: "🐯 Derek completed his daily 20 Strong Push Ups!", time: "1 hour ago", read: false }
+            { id: 1, text: "🐯 Derek completed his daily Push Ups!", time: "1 hour ago", read: false }
           ]);
           const [familyStreak, setFamilyStreak] = React.useState(() => {
             const saved = localStorage.getItem('gift_of_strength_family_streak');
@@ -144,7 +190,40 @@
           const [customNudgeMessage, setCustomNudgeMessage] = React.useState("");
           const [soundEnabled, setSoundEnabled] = React.useState(true);
 
-          // Save to local storage whenever state changes to maintain family data persistence!
+          // Interactive logging temporary rep counters
+          const [repCounter, setRepCounter] = React.useState(0);
+
+          const [friendSearchQuery, setFriendSearchQuery] = React.useState("");
+          const [friendsList, setFriendsList] = React.useState([
+            { id: 'derek', name: 'Derek (Dad)', avatar: '🐯', role: 'Parent', status: 'Online', streak: 5, completed: false },
+            { id: 'bridget', name: 'Bridget (Mom)', avatar: '🐼', role: 'Parent', status: 'Online', streak: 12, completed: true },
+            { id: 'grandma', name: 'Grandma Jo', avatar: '🐨', role: 'Grandmother', status: 'Active', streak: 21, completed: true },
+            { id: 'uncle_bob', name: 'Uncle Bob', avatar: '🦁', role: 'Uncle', status: 'Resting', streak: 8, completed: false }
+          ]);
+          
+          const [globalUsersPool, setGlobalUsersPool] = React.useState([
+            { id: 'coach_dan', name: 'Coach Dan', avatar: '🦊', role: 'Trainer', status: 'Online', streak: 15, completed: true },
+            { id: 'cousin_jenny', name: 'Cousin Jenny', avatar: '🐰', role: 'Cousin', status: 'Online', streak: 2, completed: false },
+            { id: 'bestie_leo', name: 'Leo (Best Friend)', avatar: '🐸', role: 'Friend', status: 'Online', streak: 4, completed: false },
+            { id: 'aunt_sarah', name: 'Aunt Sarah', avatar: '🦄', role: 'Aunt', status: 'Offline', streak: 9, completed: true }
+          ]);
+
+          const addFriend = (newFriend) => {
+            setFriendsList(prev => [...prev, newFriend]);
+            setGlobalUsersPool(prev => prev.filter(u => u.id !== newFriend.id));
+            playSound('complete');
+            
+            const systemNotif = {
+              id: Date.now(),
+              text: `🤝 You are now friends with ${newFriend.name}!`,
+              time: "Just now",
+              read: false,
+              special: true
+            };
+            setNotifications(prev => [systemNotif, ...prev]);
+          };
+
+          // Save to local storage whenever state changes
           React.useEffect(() => {
             localStorage.setItem('gift_of_strength_profiles', JSON.stringify(profiles));
           }, [profiles]);
@@ -155,6 +234,7 @@
 
           const currentProfile = profiles.find(p => p.id === activeProfileId) || profiles[0];
 
+          // Synthesis Sound Engine
           const playSound = (type) => {
             if (!soundEnabled) return;
             try {
@@ -179,9 +259,9 @@
                 gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
                 oscillator.start();
                 oscillator.stop(audioCtx.currentTime + 0.2);
-              } else if (type === 'switch') {
+              } else if (type === 'switch' || type === 'rep') {
                 oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
+                oscillator.frequency.setValueAtTime(type === 'rep' ? 350 + (repCounter * 20) : 300, audioCtx.currentTime);
                 gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
                 oscillator.start();
                 oscillator.stop(audioCtx.currentTime + 0.08);
@@ -191,9 +271,94 @@
             }
           };
 
+          const handleLogin = (e) => {
+            e.preventDefault();
+            if (!usernameInput.trim()) {
+              setLoginError("Please enter a username!");
+              return;
+            }
+
+            const cleanUser = usernameInput.trim().toLowerCase();
+            let targetProfile = profiles.find(p => p.id === cleanUser || p.name.toLowerCase().includes(cleanUser));
+
+            if (!targetProfile) {
+              const availableAnimals = [
+                { avatar: "🦁", petName: "Leo the Lion", bgColor: "from-yellow-400 to-orange-500", border: "border-yellow-400" },
+                { avatar: "🦊", petName: "Finny the Fox", bgColor: "from-orange-500 to-red-500", border: "border-orange-500" },
+                { avatar: "🐸", petName: "Hopper the Frog", bgColor: "from-emerald-400 to-green-500", border: "border-emerald-400" }
+              ];
+              const randomAsset = availableAnimals[Math.floor(Math.random() * availableAnimals.length)];
+              
+              const newProfile = {
+                id: cleanUser.replace(/\s+/g, ''),
+                name: `${usernameInput.trim()} (Guest)`,
+                role: 'Adventurer',
+                avatar: randomAsset.avatar,
+                petName: randomAsset.petName,
+                bgColor: randomAsset.bgColor,
+                borderColor: randomAsset.border,
+                exercise: 'Push Ups',
+                targetReps: 12,
+                repsDone: 0,
+                completed: false,
+                streak: 1,
+                lastCompleted: null
+              };
+
+              setProfiles(prev => [...prev, newProfile]);
+              setActiveProfileId(newProfile.id);
+            } else {
+              setActiveProfileId(targetProfile.id);
+            }
+
+            playSound('complete');
+            setIsLoggedIn(true);
+            setCurrentView('home');
+            setLoginError("");
+          };
+
           const handleProfileChange = (id) => {
             setActiveProfileId(id);
+            const tgt = profiles.find(p => p.id === id);
+            setRepCounter(tgt ? tgt.repsDone : 0);
             playSound('switch');
+          };
+
+          const selectExerciseAndProceed = (exerciseName) => {
+            setSelectedExercise(exerciseName);
+            // Dynamically assign target reps based on selected exercise
+            let multiplier = 1;
+            if (exerciseName === 'Squats') multiplier = 1.2; // kids and parents can do a bit more squats
+            if (exerciseName === 'Sit Ups') multiplier = 1;
+            if (exerciseName === 'Lunges') multiplier = 0.8; // lunges are slightly harder
+
+            setProfiles(prev => prev.map(p => {
+              if (p.id === activeProfileId) {
+                return {
+                  ...p,
+                  exercise: exerciseName,
+                  targetReps: Math.round((p.id === 'alex' ? 10 : p.id === 'derek' ? 20 : 15) * multiplier)
+                };
+              }
+              return p;
+            }));
+
+            setRepCounter(0);
+            playSound('switch');
+            setCurrentView('log');
+          };
+
+          const incrementRep = () => {
+            if (currentProfile.completed) return;
+            const newRepCount = repCounter + 1;
+            setRepCounter(newRepCount);
+            playSound('rep');
+
+            setProfiles(prev => prev.map(p => p.id === activeProfileId ? { ...p, repsDone: newRepCount } : p));
+
+            if (newRepCount >= currentProfile.targetReps) {
+              completeWorkout();
+            }
           };
 
           const completeWorkout = () => {
@@ -204,6 +369,7 @@
                   return {
                     ...p,
                     completed: true,
+                    repsDone: p.targetReps,
                     streak: p.streak + 1,
                     lastCompleted: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                   };
@@ -217,7 +383,7 @@
 
             const newNotif = {
               id: Date.now(),
-              text: `${currentProfile.avatar} ${currentProfile.name} completed: "${currentProfile.exercise}"!`,
+              text: `${currentProfile.avatar} ${currentProfile.name} completed their daily ${selectedExercise}!`,
               time: "Just now",
               read: false
             };
@@ -230,7 +396,7 @@
                   setFamilyStreak(s => s + 1);
                   const streakNotif = {
                     id: Date.now() + 1,
-                    text: `🎉 Amazing! Everyone finished today! Family Bond Streak upgraded to ${familyStreak + 1} days! ❤️`,
+                    text: `🎉 Incredible! Everyone did their exercises today! Family Bond upgraded to a ${familyStreak + 1} day streak! ❤️`,
                     time: "Just now",
                     read: false,
                     special: true
@@ -242,12 +408,12 @@
             }, 100);
           };
 
-          const sendNudge = (targetProfile) => {
-            const message = customNudgeMessage.trim() || `Remember to do your ${targetProfile.exercise}!`;
+          const triggerNudge = (targetProfile, messageText) => {
+            const message = messageText || `Remember to do your ${targetProfile.targetReps} ${targetProfile.exercise}!`;
             
             const nudgeNotif = {
               id: Date.now(),
-              text: `${currentProfile.avatar} ${currentProfile.name} sent a friendly reminder to ${targetProfile.avatar} ${targetProfile.name}: "${message}"`,
+              text: `${currentProfile.avatar} ${currentProfile.name} sent a reminder to ${targetProfile.avatar} ${targetProfile.name}: "${message}"`,
               time: "Just now",
               read: false,
               nudge: true
@@ -260,10 +426,11 @@
           };
 
           const resetDay = () => {
-            setProfiles(prev => prev.map(p => ({ ...p, completed: false, lastCompleted: null })));
+            setProfiles(prev => prev.map(p => ({ ...p, completed: false, repsDone: 0 })));
+            setRepCounter(0);
             const systemNotif = {
               id: Date.now(),
-              text: "🌅 A new morning has arrived! Workouts have been reset. Keep up the consistency!",
+              text: "🌅 A new day has dawned! Exercises have been reset. Get ready to build that strength!",
               time: "Just now",
               read: false,
               special: true
@@ -271,9 +438,72 @@
             setNotifications(prev => [systemNotif, ...prev]);
           };
 
+          // Render Login Screen if unauthenticated
+          if (!isLoggedIn) {
+            return (
+              <div className="min-h-screen bg-slate-950 flex flex-col justify-between p-4 relative overflow-hidden text-slate-100 font-sans">
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+                
+                <div className="flex-1 flex flex-col items-center justify-center">
+                  <div className="w-full max-w-md bg-slate-900/50 border border-slate-800/80 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl relative fade-in">
+                    
+                    <div className="text-center mb-8">
+                      <div className="inline-flex bg-gradient-to-tr from-amber-400 to-orange-500 p-4 rounded-2xl shadow-lg mb-4 text-3xl">
+                        🎁
+                      </div>
+                      <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 tracking-tight">
+                        Gift of Strength
+                      </h1>
+                      <p className="text-slate-400 text-sm mt-1.5 font-medium">Family Exercise Accountability</p>
+                    </div>
+
+                    <form onSubmit={handleLogin} className="space-y-5">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Username</label>
+                        <input 
+                          type="text" 
+                          placeholder="Type 'Alex', 'Bridget', 'Derek' or your own"
+                          className="w-full bg-slate-950/80 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 placeholder-slate-600 text-sm transition-all"
+                          value={usernameInput}
+                          onChange={(e) => setUsernameInput(e.target.value)}
+                        />
+                        <p className="text-[11px] text-slate-500 mt-1.5">💡 Tip: Use a family name to load custom character streaks!</p>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Password</label>
+                        <input 
+                          type="password" 
+                          placeholder="••••••••"
+                          className="w-full bg-slate-950/80 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 placeholder-slate-600 text-sm transition-all"
+                          value={passwordInput}
+                        />
+                      </div>
+
+                      {loginError && (
+                        <p className="text-xs text-rose-400 font-medium text-center">{loginError}</p>
+                      )}
+
+                      <button 
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-slate-950 font-black text-sm tracking-wider uppercase py-4 rounded-xl shadow-lg active:scale-95 transition-all cursor-pointer"
+                      >
+                        Log In
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                <footer className="text-center text-xs text-slate-600 relative z-10 py-2">
+                  Gift of Strength © 2026 • Consistency over comparison.
+                </footer>
+              </div>
+            );
+          }
+
+          // Main Interactive Layout after logging in
           return (
-            <div className="min-h-screen bg-amber-50 text-slate-800 font-sans pb-12 transition-all">
-              {/* Celebration Pop-up */}
+            <div className="min-h-screen bg-amber-50 text-slate-800 font-sans pb-12 transition-all fade-in">
               {celebration && (
                 <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                   <div className="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl border-4 border-emerald-400 relative overflow-hidden transform scale-100 transition-transform">
@@ -281,91 +511,39 @@
                     <div className="text-7xl mb-4 animate-bounce">{celebration.avatar}</div>
                     <h3 className="text-2xl font-black text-emerald-600 mb-2">UTTERLY AWESOME!</h3>
                     <p className="text-slate-600 font-medium mb-4">
-                      {celebration.petName} jumps with joy! You completed <span className="font-bold text-slate-800">{celebration.exercise}</span>.
+                      {celebration.petName} is doing backflips! You completed all <span className="font-bold text-slate-800">{celebration.targetReps} {selectedExercise}</span>.
                     </p>
                     <div className="bg-amber-100 rounded-full px-4 py-2 inline-flex items-center gap-1.5 mb-6 text-amber-700 font-bold">
                       <IconFlame />
-                      <span>Your Streak: {celebration.streak + 1} Days!</span>
+                      <span>Your Streak: {celebration.streak} Days!</span>
                     </div>
                     <button 
-                      onClick={() => setCelebration(null)}
-                      className="w-full bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold py-3 px-6 rounded-2xl shadow-lg shadow-emerald-200 transition-all text-lg"
+                      onClick={() => { setCelebration(null); setCurrentView('home'); }}
+                      className="w-full bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold py-3 px-6 rounded-2xl shadow-lg transition-all text-lg"
                     >
-                      Keep Rocking! 🚀
+                      Return to Dashboard 🚀
                     </button>
                   </div>
                 </div>
               )}
 
-              {/* Nudge Modal */}
-              {activeNudgeUser && (
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center p-4">
-                  <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-xl border-t-8 border-amber-400">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-slate-800">Send an Alert to {activeNudgeUser.name}</h3>
-                        <p className="text-sm text-slate-500">Remind them with a fun, child-friendly animal roar!</p>
-                      </div>
-                      <span className="text-3xl">{activeNudgeUser.avatar}</span>
-                    </div>
-                    
-                    <div className="mb-4">
-                      <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Pick a quick message</label>
-                      <div className="grid grid-cols-1 gap-2 max-h-32 overflow-y-auto mb-3">
-                        {CHIBI_NUDGES.map((nudgeMsg, idx) => (
-                          <button 
-                            key={idx}
-                            type="button"
-                            onClick={() => setCustomNudgeMessage(nudgeMsg)}
-                            className={`text-left text-sm p-2 rounded-lg border transition-all ${customNudgeMessage === nudgeMsg ? 'border-amber-400 bg-amber-50 font-semibold' : 'border-slate-100 hover:bg-slate-50'}`}
-                          >
-                            {nudgeMsg}
-                          </button>
-                        ))}
-                      </div>
-                      <textarea
-                        placeholder="Or write your own loving reminder..."
-                        className="w-full p-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
-                        rows="2"
-                        value={customNudgeMessage}
-                        onChange={(e) => setCustomNudgeMessage(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="flex gap-3">
-                      <button 
-                        onClick={() => { setActiveNudgeUser(null); setCustomNudgeMessage(""); }}
-                        className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2.5 rounded-xl font-bold transition-all text-sm"
-                      >
-                        Cancel
-                      </button>
-                      <button 
-                        onClick={() => sendNudge(activeNudgeUser)}
-                        className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white py-2.5 rounded-xl font-bold shadow-md shadow-orange-100 transition-all text-sm flex items-center justify-center gap-1.5"
-                      >
-                        <IconSend />
-                        Send Chibi Alert
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Header Bar */}
+              {/* Dynamic App Header */}
               <header className="bg-white border-b-4 border-amber-200 sticky top-0 z-30">
                 <div className="max-w-4xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="bg-amber-400 p-2.5 rounded-2xl shadow-inner text-2xl">🎁</div>
+                    <div className="bg-amber-400 p-2.5 rounded-2xl shadow-inner text-2xl cursor-pointer" onClick={() => setCurrentView('home')}>🎁</div>
                     <div>
-                      <h1 className="text-2xl font-black text-amber-600 tracking-tight leading-none flex items-center gap-1">
+                      <h1 className="text-2xl font-black text-amber-600 tracking-tight leading-none">
                         Gift of Strength
                       </h1>
-                      <p className="text-xs text-slate-500 mt-1">Make consistency a playful family game!</p>
+                      <p className="text-xs text-slate-500 mt-1">
+                        Welcome back, <span className="font-bold text-slate-700">{currentProfile.name.split(' ')[0]}</span>! You've got this, Champ!
+                      </p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    {/* Family shared streak counter */}
+                    {/* Family collective streak */}
                     <div className="bg-rose-50 border-2 border-rose-200 rounded-2xl py-1.5 px-4 flex items-center gap-2 shadow-sm">
                       <IconHeart />
                       <div>
@@ -374,13 +552,19 @@
                       </div>
                     </div>
 
-                    {/* Sound Toggler */}
                     <button 
                       onClick={() => setSoundEnabled(!soundEnabled)}
                       className={`p-2 rounded-full border transition-all ${soundEnabled ? 'bg-amber-100 border-amber-300 text-amber-700' : 'bg-slate-100 border-slate-200 text-slate-400'}`}
-                      title="Toggle Beep Sounds"
+                      title="Toggle Sounds"
                     >
                       <IconVolume />
+                    </button>
+
+                    <button 
+                      onClick={() => setIsLoggedIn(false)}
+                      className="p-2 text-xs font-bold text-slate-400 hover:text-rose-600 border border-slate-200 rounded-xl hover:bg-rose-50 transition-all"
+                    >
+                      Exit
                     </button>
                   </div>
                 </div>
@@ -388,218 +572,532 @@
 
               <main className="max-w-4xl mx-auto px-4 mt-6">
                 
-                {/* Profile Switching Deck */}
-                <section className="bg-white rounded-3xl p-6 shadow-sm border-2 border-slate-100 mb-6">
-                  <div className="text-center mb-4">
-                    <h2 className="text-sm font-bold text-slate-500 uppercase tracking-widest">Who is using the app right now?</h2>
-                    <p className="text-xs text-slate-400">Click to switch family views and log exercises!</p>
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-3">
-                    {profiles.map(p => {
-                      const isActive = p.id === activeProfileId;
-                      return (
-                        <button
-                          key={p.id}
-                          onClick={() => handleProfileChange(p.id)}
-                          className={`flex flex-col items-center p-3 sm:p-4 rounded-2xl border-4 transition-all transform ${isActive ? `${p.borderColor} bg-slate-50 scale-102 shadow-md font-bold` : 'border-transparent hover:bg-slate-50 opacity-70 hover:opacity-100'}`}
-                        >
-                          <div className="text-4xl sm:text-5xl mb-2 relative">
-                            {p.avatar}
-                            {p.completed && (
-                              <span className="absolute -bottom-1 -right-1 bg-emerald-500 text-white rounded-full p-1 border-2 border-white flex items-center justify-center">
-                                <IconCheck />
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-xs sm:text-sm font-black text-slate-700">{p.name.split(' ')[0]}</div>
-                          <div className="text-[10px] text-slate-500">{p.role}</div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </section>
-
-                {/* 2 Column Interaction Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                  
-                  {/* Column 1: Active User Card (Focuses on the massive action button) */}
-                  <div className="md:col-span-3 flex flex-col gap-6">
-                    <div className={`bg-gradient-to-b ${currentProfile.bgColor} rounded-3xl p-6 text-white shadow-xl relative overflow-hidden flex-1`}>
-                      <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
-                      <div className="absolute left-6 top-6 text-xs font-black uppercase tracking-widest bg-white/20 py-1 px-3 rounded-full backdrop-blur-sm">
-                        Your Dashboard
+                {/* 1. HOME SCREEN - Dashboard featuring 4 clean action cards */}
+                {currentView === 'home' && (
+                  <div className="fade-in space-y-6">
+                    {/* Profile Toggle Belt */}
+                    <div className="bg-amber-100/50 border-2 border-amber-200/60 rounded-3xl p-4 flex items-center justify-between gap-3">
+                      <span className="text-xs font-bold text-amber-800 uppercase tracking-wide">Testing Profile:</span>
+                      <div className="flex gap-2">
+                        {profiles.map(p => (
+                          <button
+                            key={p.id}
+                            onClick={() => handleProfileChange(p.id)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${p.id === activeProfileId ? 'bg-amber-500 text-white shadow-sm' : 'bg-white hover:bg-slate-100'}`}
+                          >
+                            {p.avatar} {p.name.split(' ')[0]}
+                          </button>
+                        ))}
                       </div>
+                    </div>
 
-                      <div className="mt-8 flex flex-col items-center text-center">
-                        <div className="w-24 h-24 bg-white/15 rounded-full flex items-center justify-center text-6xl shadow-inner mb-4 relative">
-                          {currentProfile.avatar}
-                          <span className="absolute -top-1 -right-1 text-2xl animate-pulse">✨</span>
-                        </div>
-
-                        <h2 className="text-2xl font-black">{currentProfile.name}</h2>
-                        <p className="text-sm text-white/80 mt-1">Guided by: <span className="font-semibold underline decoration-dashed">{currentProfile.petName}</span></p>
-
-                        {/* Individual Streak Badge */}
-                        <div className="mt-4 bg-white/20 backdrop-blur-md border border-white/20 py-1.5 px-4 rounded-full flex items-center gap-1.5 text-sm font-bold shadow-sm">
-                          <IconFlame />
-                          <span>My Active Streak: {currentProfile.streak} Days</span>
-                        </div>
-
-                        {/* Today's Mission Plate */}
-                        <div className="mt-6 w-full bg-white text-slate-800 rounded-2xl p-5 shadow-lg border-2 border-dashed border-amber-300 relative">
-                          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-400 text-slate-900 font-extrabold text-[10px] uppercase tracking-widest py-0.5 px-3 rounded-full shadow-sm">
-                            Today's Task
+                    {/* Simple summary cards */}
+                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-3xl p-6 text-white shadow-lg relative overflow-hidden">
+                      <div className="absolute right-4 -bottom-10 text-9xl opacity-15 pointer-events-none select-none">💪</div>
+                      <div className="flex items-center gap-4">
+                        <div className="text-5xl">{currentProfile.avatar}</div>
+                        <div>
+                          <p className="text-sm text-white/80 font-bold uppercase tracking-wide">Your Active Goal Today</p>
+                          <h2 className="text-2xl font-black mt-0.5">
+                            {currentProfile.completed ? "All Done! Sweet work!" : `${currentProfile.targetReps} daily ${currentProfile.exercise}`}
+                          </h2>
+                          <div className="flex items-center gap-1.5 mt-2 bg-white/20 px-3 py-1 rounded-full text-xs font-bold w-fit">
+                            <IconFlame />
+                            <span>Current Streak: {currentProfile.streak} Days</span>
                           </div>
-                          <p className="text-lg font-black text-slate-700 mt-1">"{currentProfile.exercise}"</p>
-                          <p className="text-xs text-slate-400 mt-1">Completing this saves the family's daily streak!</p>
-                        </div>
-
-                        {/* WORKOUT COMPLETION BUTTON */}
-                        <div className="w-full mt-6">
-                          {currentProfile.completed ? (
-                            <div className="bg-emerald-100 text-emerald-800 rounded-2xl p-4 flex flex-col items-center justify-center border-2 border-emerald-400 shadow-inner">
-                              <span className="bg-emerald-500 text-white rounded-full p-2 mb-2">
-                                <IconCheck />
-                              </span>
-                              <span className="font-extrabold text-lg">Workout Finished Today!</span>
-                              <span className="text-xs text-emerald-600 mt-0.5">Completed at {currentProfile.lastCompleted}</span>
-                            </div>
-                          ) : (
-                            <button
-                              onClick={completeWorkout}
-                              className="w-full bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white text-xl font-black py-5 px-8 rounded-2xl shadow-xl shadow-emerald-500/20 active:scale-95 hover:scale-[1.02] transition-all transform flex items-center justify-center gap-3"
-                            >
-                              <span>✨</span>
-                              I Did My Workout!
-                            </button>
-                          )}
                         </div>
                       </div>
                     </div>
+
+                    {/* MAIN TOUCH-FRIENDLY ACTION GRID */}
+                    <div className="grid grid-cols-2 gap-4 md:gap-6">
+                      
+                      {/* CARD 1: Log Daily Exercise */}
+                      <button
+                        onClick={() => {
+                          setCurrentView('select_exercise');
+                        }}
+                        className="group bg-gradient-to-br from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-emerald-600/50 flex flex-col justify-between min-h-[160px]"
+                      >
+                        <div className="absolute right-4 top-4 text-emerald-100/30 group-hover:scale-110 transition-transform">
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">✨</span>
+                        <div>
+                          <h3 className="text-xl font-extrabold tracking-tight">Log Daily Exercise</h3>
+                          <p className="text-xs text-emerald-100 mt-1 font-medium">Choose an exercise & start tracking!</p>
+                        </div>
+                      </button>
+
+                      {/* CARD 2: Daily Challenge */}
+                      <button
+                        onClick={() => setCurrentView('challenge')}
+                        className="group bg-gradient-to-br from-cyan-400 to-indigo-500 hover:from-cyan-500 hover:to-indigo-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-indigo-600/50 flex flex-col justify-between min-h-[160px]"
+                      >
+                        <div className="absolute right-4 top-4 text-cyan-100/30 group-hover:scale-110 transition-transform">
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1.25m6.364.386l-.88.88M21 12h-1.25m-.386 6.364l-.88-.88M12 21v-1.25m-6.364-.386l.88-.88M3 12h1.25m.386-6.364l.88.88M12 18.75a6.75 6.75 0 100-13.5 6.75 6.75 0 000 13.5z"></path></svg>
+                        </div>
+                        <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">🏆</span>
+                        <div>
+                          <h3 className="text-xl font-extrabold tracking-tight">Daily Challenge</h3>
+                          <p className="text-xs text-cyan-100 mt-1 font-medium">Cooperative goals & fun reward meters!</p>
+                        </div>
+                      </button>
+
+                      {/* CARD 3: Mess with Fam */}
+                      <button
+                        onClick={() => setCurrentView('nudge')}
+                        className="group bg-gradient-to-br from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-orange-600/50 flex flex-col justify-between min-h-[160px]"
+                      >
+                        <div className="absolute right-4 top-4 text-orange-100/30 group-hover:scale-110 transition-transform">
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"></path></svg>
+                        </div>
+                        <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">📢</span>
+                        <div>
+                          <h3 className="text-xl font-extrabold tracking-tight">Mess with Fam</h3>
+                          <p className="text-xs text-orange-100 mt-1 font-medium">Send playful animal nudges to get moving!</p>
+                        </div>
+                      </button>
+
+                      {/* CARD 4: Friends */}
+                      <button
+                        onClick={() => setCurrentView('friends')}
+                        className="group bg-gradient-to-br from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-pink-600/50 flex flex-col justify-between min-h-[160px]"
+                      >
+                        <div className="absolute right-4 top-4 text-pink-100/30 group-hover:scale-110 transition-transform">
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path></svg>
+                        </div>
+                        <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">❤️</span>
+                        <div>
+                          <h3 className="text-xl font-extrabold tracking-tight">Friends</h3>
+                          <p className="text-xs text-pink-100 mt-1 font-medium">Compare streaks & view connections!</p>
+                        </div>
+                      </button>
+
+                    </div>
+
+                    {/* Quick Simulated Live Alert Feed */}
+                    <div className="bg-white rounded-3xl p-5 border-2 border-slate-100 shadow-sm">
+                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Live Feed Alerts</h4>
+                      <div className="space-y-2">
+                        {notifications.slice(0, 2).map((n, i) => (
+                          <div key={i} className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <span>{n.text}</span>
+                            <span className="text-[10px] text-slate-400">{n.time}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                   </div>
+                )}
 
-                  {/* Column 2: Family Dashboard */}
-                  <div className="md:col-span-2 flex flex-col gap-6">
-                    <div className="bg-white rounded-3xl p-5 shadow-sm border-2 border-slate-100 flex-1 flex flex-col">
-                      <h3 className="text-lg font-black text-slate-700 flex items-center gap-2 mb-4">
-                        <IconHeart />
-                        Family Progress
-                      </h3>
+                {/* 1.5 SUB-VIEW: EXERCISE PATH (Selection Screen) */}
+                {currentView === 'select_exercise' && (
+                  <div className="fade-in space-y-6">
+                    <button 
+                      onClick={() => setCurrentView('home')} 
+                      className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-800 transition-all bg-white py-2 px-4 rounded-xl border border-slate-200 w-fit"
+                    >
+                      <IconArrowLeft /> Back to Dashboard
+                    </button>
 
-                      <div className="space-y-4 flex-1">
+                    <div className="bg-white rounded-3xl p-8 border-2 border-amber-200/60 shadow-lg space-y-6">
+                      <div className="text-center max-w-md mx-auto">
+                        <span className="text-xs font-bold bg-amber-100 text-amber-800 py-1 px-3 rounded-full uppercase tracking-widest">Exercise Path</span>
+                        <h2 className="text-2xl font-black text-slate-800 mt-3">Choose Your Movement</h2>
+                        <p className="text-sm text-slate-500 mt-1">Select an active exercise to log. Tango, Barnaby, and Penny are waiting to count your reps!</p>
+                      </div>
+
+                      {/* 2x2 Clean Uniform Grid */}
+                      <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4">
+                        
+                        {/* Option 1: Push Ups */}
+                        <button
+                          onClick={() => selectExerciseAndProceed('Push Ups')}
+                          className="group bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-500 hover:to-teal-600 border-2 border-emerald-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
+                        >
+                          <div className="text-emerald-500 group-hover:text-white transition-colors">
+                            <PushUpIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Push Ups</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-emerald-100 mt-1.5 transition-colors">Upper Body Power</p>
+                          </div>
+                        </button>
+
+                        {/* Option 2: Squats */}
+                        <button
+                          onClick={() => selectExerciseAndProceed('Squats')}
+                          className="group bg-gradient-to-br from-blue-50 to-cyan-50 hover:from-blue-500 hover:to-cyan-600 border-2 border-blue-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
+                        >
+                          <div className="text-blue-500 group-hover:text-white transition-colors">
+                            <SquatIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Squats</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-blue-100 mt-1.5 transition-colors">Lower Body Strength</p>
+                          </div>
+                        </button>
+
+                        {/* Option 3: Sit Ups */}
+                        <button
+                          onClick={() => selectExerciseAndProceed('Sit Ups')}
+                          className="group bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-500 hover:to-pink-600 border-2 border-purple-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
+                        >
+                          <div className="text-purple-500 group-hover:text-white transition-colors">
+                            <SitUpIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Sit Ups</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-purple-100 mt-1.5 transition-colors">Core Alignment</p>
+                          </div>
+                        </button>
+
+                        {/* Option 4: Lunges */}
+                        <button
+                          onClick={() => selectExerciseAndProceed('Lunges')}
+                          className="group bg-gradient-to-br from-amber-50 to-orange-50 hover:from-amber-500 hover:to-orange-600 border-2 border-amber-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
+                        >
+                          <div className="text-amber-600 group-hover:text-white transition-colors">
+                            <LungeIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Lunges</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-amber-100 mt-1.5 transition-colors">Balance & Balance</p>
+                          </div>
+                        </button>
+
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* 2. SUB-VIEW: LOG EXERCISE (Interactive Movement Counter) */}
+                {currentView === 'log' && (
+                  <div className="fade-in space-y-6">
+                    <button 
+                      onClick={() => setCurrentView('select_exercise')} 
+                      className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-800 transition-all bg-white py-2 px-4 rounded-xl border border-slate-200 w-fit"
+                    >
+                      <IconArrowLeft /> Change Exercise
+                    </button>
+
+                    <div className={`bg-gradient-to-b ${currentProfile.bgColor} text-white p-8 rounded-3xl text-center shadow-xl relative overflow-hidden`}>
+                      <span className="text-xs font-extrabold bg-white/20 px-3 py-1 rounded-full uppercase tracking-widest">Interactive Rep Counter</span>
+                      
+                      <div className="text-7xl my-6 animate-bounce select-none">
+                        {currentProfile.avatar}
+                      </div>
+
+                      <h2 className="text-3xl font-black">{currentProfile.name}</h2>
+                      <p className="text-sm text-white/80 mt-1">Ready with <span className="font-bold underline">{currentProfile.petName}</span></p>
+
+                      <div className="my-8 bg-white/10 backdrop-blur-md p-6 rounded-2xl max-w-sm mx-auto border border-white/20">
+                        <p className="text-xs font-bold uppercase tracking-wider text-white/70">Your {selectedExercise} Target</p>
+                        <div className="flex items-baseline justify-center gap-2 mt-2">
+                          <span className="text-5xl font-black">{repCounter}</span>
+                          <span className="text-xl text-white/60">/ {currentProfile.targetReps} reps</span>
+                        </div>
+                        
+                        {/* Interactive Progress Bar */}
+                        <div className="w-full bg-black/20 h-3 rounded-full mt-4 overflow-hidden">
+                          <div 
+                            className="bg-yellow-300 h-full rounded-full transition-all duration-150" 
+                            style={{ width: `${Math.min(100, (repCounter / currentProfile.targetReps) * 100)}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      {currentProfile.completed ? (
+                        <div className="bg-emerald-500/30 border-2 border-emerald-400 p-4 rounded-2xl max-w-sm mx-auto">
+                          <p className="font-black text-lg">✨ Awesome Job! Completed today!</p>
+                        </div>
+                      ) : (
+                        <div className="space-y-4 max-w-sm mx-auto">
+                          {/* BIG INTERACTIVE TAP BUTTON */}
+                          <button
+                            onClick={incrementRep}
+                            className="w-full bg-white text-slate-900 text-xl font-black py-6 px-8 rounded-2xl shadow-xl hover:scale-102 active:scale-95 transition-all flex flex-col items-center justify-center gap-1 cursor-pointer"
+                          >
+                            <span className="text-2xl">💪 Tap For Each {selectedExercise}!</span>
+                            <span className="text-xs font-medium text-slate-500">Do your movement then click this!</span>
+                          </button>
+
+                          <button 
+                            onClick={completeWorkout}
+                            className="text-xs text-white/70 hover:text-white underline font-bold"
+                          >
+                            Or skip directly to finished
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* 3. SUB-VIEW: DAILY CHALLENGE (Cooperative goal) */}
+                {currentView === 'challenge' && (
+                  <div className="fade-in space-y-6">
+                    <button 
+                      onClick={() => setCurrentView('home')} 
+                      className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-800 transition-all bg-white py-2 px-4 rounded-xl border border-slate-200 w-fit"
+                    >
+                      <IconArrowLeft /> Back to Dashboard
+                    </button>
+
+                    <div className="bg-white rounded-3xl p-6 border-2 border-slate-100 shadow-sm space-y-6">
+                      <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                        <div>
+                          <h2 className="text-2xl font-black text-slate-800">Family Workout Challenge</h2>
+                          <p className="text-xs text-slate-500">Every single exercise from Bridget, Derek, and Alex counts!</p>
+                        </div>
+                        <span className="text-4xl">🏆</span>
+                      </div>
+
+                      {/* Goal reward cards */}
+                      <div className="bg-gradient-to-r from-indigo-50 to-blue-50 border-2 border-indigo-100 rounded-2xl p-5 flex items-start gap-4">
+                        <span className="text-4xl">🍨</span>
+                        <div>
+                          <h3 className="text-md font-bold text-indigo-900">Unlocks at 7-Day Family Streak</h3>
+                          <p className="text-xs text-indigo-700 font-medium">"Sunday Ice Cream and Movie Party!" Keep the streak going so the family gets the reward!</p>
+                        </div>
+                      </div>
+
+                      {/* Cumulative progress calculation */}
+                      <div>
+                        <div className="flex justify-between items-baseline mb-2">
+                          <span className="text-sm font-extrabold text-slate-600">Today's Team Progress</span>
+                          <span className="text-lg font-black text-indigo-600">
+                            {profiles.reduce((sum, p) => sum + p.repsDone, 0)} / {profiles.reduce((sum, p) => sum + p.targetReps, 0)} Movements Done
+                          </span>
+                        </div>
+                        <div className="w-full bg-slate-100 h-4 rounded-full overflow-hidden border border-slate-200">
+                          <div 
+                            className="bg-gradient-to-r from-cyan-400 to-indigo-500 h-full rounded-full transition-all duration-300" 
+                            style={{ 
+                              width: `${(profiles.reduce((sum, p) => sum + p.repsDone, 0) / profiles.reduce((sum, p) => sum + p.targetReps, 0)) * 100}%` 
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Reset Simulator */}
+                      <div className="pt-4 border-t border-slate-100 flex justify-between items-center gap-4">
+                        <p className="text-xs text-slate-400 font-medium">Use this helper tool to simulate testing next day's streak loop.</p>
+                        <button 
+                          onClick={resetDay}
+                          className="bg-slate-100 hover:bg-slate-200 text-slate-700 py-2.5 px-4 rounded-xl text-xs font-bold transition-all"
+                        >
+                          🌅 Simulate Next Day
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* 4. SUB-VIEW: MESS WITH FAM (Playful Chibi Nudges) */}
+                {currentView === 'nudge' && (
+                  <div className="fade-in space-y-6">
+                    <button 
+                      onClick={() => setCurrentView('home')} 
+                      className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-800 transition-all bg-white py-2 px-4 rounded-xl border border-slate-200 w-fit"
+                    >
+                      <IconArrowLeft /> Back to Dashboard
+                    </button>
+
+                    <div className="bg-white rounded-3xl p-6 border-2 border-slate-100 shadow-sm space-y-6">
+                      <div>
+                        <h2 className="text-2xl font-black text-slate-800">Mess with Fam!</h2>
+                        <p className="text-xs text-slate-500">Pick a family member who hasn't finished and send them a cute chibi alert message!</p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {profiles.map(p => {
                           const isSelf = p.id === activeProfileId;
                           return (
                             <div 
                               key={p.id}
-                              className={`p-3.5 rounded-2xl border-2 flex items-center justify-between transition-all ${isSelf ? 'bg-amber-50/50 border-amber-200' : 'bg-slate-50 border-slate-100'}`}
+                              className={`p-4 rounded-2xl border-2 flex items-center justify-between transition-all ${isSelf ? 'border-dashed border-slate-200 bg-slate-50 opacity-60' : 'bg-white border-slate-100'}`}
                             >
                               <div className="flex items-center gap-3">
-                                <div className="text-3xl bg-white p-2 rounded-xl shadow-sm border border-slate-100">
-                                  {p.avatar}
-                                </div>
+                                <span className="text-4xl bg-amber-50 p-2.5 rounded-xl border border-amber-100">{p.avatar}</span>
                                 <div>
-                                  <div className="flex items-center gap-1">
-                                    <span className="font-bold text-sm text-slate-700">{p.name.split(' ')[0]}</span>
-                                    {isSelf && <span className="text-[9px] bg-amber-400 text-slate-800 font-bold px-1.5 py-0.5 rounded-md uppercase">Me</span>}
-                                  </div>
-                                  <div className="text-[10px] text-slate-500 truncate max-w-[120px]">{p.exercise}</div>
-                                  <div className="flex items-center gap-1 mt-0.5 text-amber-600 font-bold text-xs">
-                                    <IconFlame />
-                                    <span>{p.streak} days</span>
-                                  </div>
+                                  <h4 className="font-extrabold text-slate-700">{p.name}</h4>
+                                  <p className="text-xs text-slate-500">{p.completed ? "Already finished! 🎉" : `Pending ${p.exercise}`}</p>
                                 </div>
                               </div>
 
-                              <div>
-                                {p.completed ? (
-                                  <div className="flex items-center gap-1 text-emerald-600 text-xs font-black bg-emerald-50 py-1.5 px-3 rounded-full border border-emerald-100">
-                                    <span>Done</span>
-                                  </div>
-                                ) : (
-                                  <div>
-                                    {isSelf ? (
-                                      <div className="text-[11px] font-bold text-rose-500 bg-rose-50 py-1 px-2.5 rounded-full border border-rose-100 animate-pulse">
-                                        Do it!
-                                      </div>
-                                    ) : (
-                                      <button
-                                        onClick={() => setActiveNudgeUser(p)}
-                                        className="bg-amber-400 hover:bg-amber-500 active:scale-95 text-slate-900 font-extrabold text-[11px] py-1.5 px-3 rounded-xl transition-all shadow-sm flex items-center gap-1"
-                                      >
-                                        <IconBell />
-                                        Alert
-                                      </button>
-                                    )}
-                                  </div>
-                                )}
-                              </div>
+                              {!isSelf && (
+                                <button
+                                  onClick={() => setActiveNudgeUser(p)}
+                                  disabled={p.completed}
+                                  className={`py-1.5 px-3 rounded-xl font-bold text-xs transition-all ${p.completed ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-amber-400 hover:bg-amber-500 text-slate-900 shadow-sm'}`}
+                                >
+                                  Nudge Alert
+                                </button>
+                              )}
                             </div>
                           );
                         })}
                       </div>
+                    </div>
 
-                      {/* Action summary description */}
-                      <div className="mt-4 bg-amber-50 rounded-2xl p-3 border border-amber-100">
-                        <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                          💡 <span className="font-bold text-amber-700">Family Mode:</span> Save this browser tab! It automatically saves your active streak and stats directly to your device browser so they persist!
-                        </p>
-                        <button 
-                          onClick={resetDay}
-                          className="mt-3 w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-1.5 px-3 rounded-xl text-xs transition-all"
-                        >
-                          🌅 Sim Next Day (Reset Progress)
-                        </button>
+                    {/* Interactive Alert Sender Overlay */}
+                    {activeNudgeUser && (
+                      <div className="bg-white rounded-2xl p-6 shadow-xl border-t-8 border-amber-400 fade-in">
+                        <div className="flex items-start justify-between mb-4">
+                          <div>
+                            <h3 className="text-xl font-bold text-slate-800">Pick an Animal Messenger for {activeNudgeUser.name}</h3>
+                            <p className="text-sm text-slate-500">Send custom simulated sound & notification roars!</p>
+                          </div>
+                          <span className="text-4xl">{activeNudgeUser.avatar}</span>
+                        </div>
+                        
+                        <div className="mb-4 space-y-4">
+                          <div className="grid grid-cols-1 gap-2 max-h-32 overflow-y-auto pr-1">
+                            {CHIBI_NUDGES.map((nudgeMsg, idx) => (
+                              <button 
+                                key={idx}
+                                type="button"
+                                onClick={() => setCustomNudgeMessage(nudgeMsg)}
+                                className={`text-left text-xs p-2.5 rounded-xl border transition-all ${customNudgeMessage === nudgeMsg ? 'border-amber-400 bg-amber-50 font-bold' : 'border-slate-100 hover:bg-slate-50'}`}
+                              >
+                                {nudgeMsg}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex gap-3">
+                          <button 
+                            onClick={() => { setActiveNudgeUser(null); setCustomNudgeMessage(""); }}
+                            className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2.5 rounded-xl font-bold transition-all text-sm"
+                          >
+                            Cancel
+                          </button>
+                          <button 
+                            onClick={() => triggerNudge(activeNudgeUser, customNudgeMessage)}
+                            className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white py-2.5 rounded-xl font-bold transition-all text-sm"
+                          >
+                            Send Nudge Now
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* 5. SUB-VIEW: FRIENDS LIST (Streaks Connection Deck) */}
+                {currentView === 'friends' && (
+                  <div className="fade-in space-y-6">
+                    <button 
+                      onClick={() => {
+                        setCurrentView('home');
+                        setFriendSearchQuery("");
+                      }} 
+                      className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-800 transition-all bg-white py-2 px-4 rounded-xl border border-slate-200 w-fit"
+                    >
+                      <IconArrowLeft /> Back to Dashboard
+                    </button>
+
+                    <div className="bg-white rounded-3xl p-6 border-2 border-slate-100 shadow-lg space-y-6">
+                      <div className="flex justify-between items-center pb-4 border-b border-slate-100">
+                        <div>
+                          <h2 className="text-2xl font-black text-slate-800">Community & Friends</h2>
+                          <p className="text-xs text-slate-500">Add friends, view completion statuses, and stay connected!</p>
+                        </div>
+                        <span className="text-4xl">❤️</span>
+                      </div>
+
+                      {/* Top Section: Search Bar & Interactive Search Results */}
+                      <div className="space-y-3">
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider">Add New Friends</label>
+                        <div className="relative">
+                          <input 
+                            type="text" 
+                            placeholder="Search for another user..."
+                            value={friendSearchQuery}
+                            onChange={(e) => setFriendSearchQuery(e.target.value)}
+                            className="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-xl pl-4 pr-10 py-3 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-white text-sm transition-all"
+                          />
+                          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+                        </div>
+
+                        {/* Interactive Search Results */}
+                        {friendSearchQuery.trim() !== "" && (
+                          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 mt-2">
+                            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Search Results</h4>
+                            {globalUsersPool.filter(user => 
+                              user.name.toLowerCase().includes(friendSearchQuery.toLowerCase())
+                            ).length === 0 ? (
+                              <p className="text-xs text-slate-500 italic">No users found matching "{friendSearchQuery}". Try searching "Coach", "Jenny", or "Sarah"!</p>
+                            ) : (
+                              <div className="space-y-2">
+                                {globalUsersPool
+                                  .filter(user => user.name.toLowerCase().includes(friendSearchQuery.toLowerCase()))
+                                  .map(user => (
+                                    <div key={user.id} className="flex items-center justify-between p-2 bg-white rounded-xl border border-slate-100">
+                                      <div className="flex items-center gap-3">
+                                        <span className="text-2xl bg-slate-100 p-1 rounded-lg">{user.avatar}</span>
+                                        <div>
+                                          <h5 className="text-xs font-bold text-slate-700">{user.name}</h5>
+                                          <p className="text-[10px] text-slate-400">{user.role} • Streak: {user.streak}🔥</p>
+                                        </div>
+                                      </div>
+                                      <button 
+                                        onClick={() => addFriend(user)}
+                                        className="bg-amber-400 hover:bg-amber-500 active:scale-95 text-slate-900 font-extrabold text-xs py-1.5 px-3 rounded-xl transition-all shadow-sm"
+                                      >
+                                        + Add Friend
+                                      </button>
+                                    </div>
+                                  ))
+                                }
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Main Section: Clean, scrollable Friends List */}
+                      <div className="space-y-3">
+                        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">My Friends List</h3>
+                        <div className="space-y-3 max-h-[350px] overflow-y-auto pr-1">
+                          {friendsList.map(p => (
+                            <div key={p.id} className="p-4 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-between hover:bg-slate-100/50 transition-all">
+                              <div className="flex items-center gap-3">
+                                <span className="text-4xl bg-white p-2 rounded-xl shadow-xs border border-slate-100">{p.avatar}</span>
+                                <div>
+                                  <h4 className="font-extrabold text-slate-700">{p.name}</h4>
+                                  <span className="text-xs bg-slate-200/60 text-slate-600 py-0.5 px-2 rounded-md font-bold uppercase tracking-wider">{p.role}</span>
+                                </div>
+                              </div>
+
+                              <div className="flex flex-col items-end gap-1.5">
+                                {/* Small status indicator */}
+                                <div className="flex items-center gap-1.5">
+                                  <span className={`w-2.5 h-2.5 rounded-full ${
+                                    p.completed ? 'bg-emerald-500 animate-pulse' : 
+                                    p.status === 'Online' ? 'bg-blue-500 animate-pulse' : 'bg-slate-400'
+                                  }`}></span>
+                                  <span className="text-[11px] font-bold text-slate-500">
+                                    {p.completed ? 'Completed today! 🎉' : p.status}
+                                  </span>
+                                </div>
+
+                                <div className="flex items-center gap-1 bg-amber-100/80 text-amber-800 font-extrabold px-2 py-0.5 rounded-lg text-xs">
+                                  <IconFlame />
+                                  <span>{p.streak} Days active</span>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Notifications Log */}
-                <section className="bg-white rounded-3xl p-6 shadow-sm border-2 border-slate-100 mt-6">
-                  <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
-                    <h3 className="text-md font-bold text-slate-700 flex items-center gap-2">
-                      <IconBell />
-                      Live Phone Alerts Log (Simulated Notifications)
-                    </h3>
-                    <button 
-                      onClick={() => setNotifications([])}
-                      className="text-xs text-slate-400 hover:text-slate-600 font-bold transition-all"
-                    >
-                      Clear Log
-                    </button>
-                  </div>
-
-                  {notifications.length === 0 ? (
-                    <div className="text-center py-6 text-slate-400 text-sm">
-                      No recent alerts.
-                    </div>
-                  ) : (
-                    <div className="space-y-3 max-h-56 overflow-y-auto pr-1">
-                      {notifications.map(n => {
-                        let cardStyle = "bg-slate-50 border-slate-100 text-slate-700";
-                        if (n.special) cardStyle = "bg-rose-50 border-rose-200 text-rose-800 font-bold";
-                        if (n.nudge) cardStyle = "bg-orange-50 border-orange-200 text-orange-800 font-medium";
-
-                        return (
-                          <div 
-                            key={n.id}
-                            className={`p-3 rounded-xl border-2 text-xs flex items-start justify-between gap-3 ${cardStyle}`}
-                          >
-                            <div className="flex items-start gap-2">
-                              <div className="mt-0.5">
-                                {n.special ? '🏆' : n.nudge ? '📢' : '💪'}
-                              </div>
-                              <p>{n.text}</p>
-                            </div>
-                            <span className="text-[10px] text-slate-400 whitespace-nowrap">{n.time}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </section>
+                )}
 
               </main>
             </div>
