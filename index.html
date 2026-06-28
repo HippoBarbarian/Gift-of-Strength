@@ -54,234 +54,6 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        
-        const SvgCamy = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Fiery Mane */}
-                <path d="M50 5C20 5 5 20 5 50C5 80 20 95 50 95C80 95 95 80 95 50C95 20 80 5 50 5Z" fill="url(#mane-grad)" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Ears */}
-                <path d="M22 28C15 28 15 42 22 42Z" fill="#D97706" stroke="#1E293B" strokeWidth="2.5"/>
-                <path d="M78 28C85 28 85 42 78 42Z" fill="#D97706" stroke="#1E293B" strokeWidth="2.5"/>
-                {/* Golden Lion Face */}
-                <path d="M50 20C30 20 25 35 25 55C25 75 35 85 50 85C65 85 75 75 75 55C75 35 70 20 50 20Z" fill="#F59E0B" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Cheeks & Muzzle */}
-                <path d="M50 58C40 58 38 68 50 68C62 68 60 58 50 58Z" fill="#FFFBEB" stroke="#1E293B" strokeWidth="2.5"/>
-                {/* Lion Nose */}
-                <path d="M44 50H56L50 58L44 50Z" fill="#991B1B" stroke="#1E293B" strokeWidth="2"/>
-                {/* Expressive Eyes */}
-                <ellipse cx="38" cy="42" rx="6" ry="7" fill="#FCD34D" stroke="#1E293B" strokeWidth="2"/>
-                <circle cx="38" cy="42" r="3" fill="#111827"/>
-                <ellipse cx="62" cy="42" rx="6" ry="7" fill="#FCD34D" stroke="#1E293B" strokeWidth="2"/>
-                <circle cx="62" cy="42" r="3" fill="#111827"/>
-                {/* Eyebrows */}
-                <path d="M30 33C35 30 42 34 42 34" stroke="#451A03" strokeWidth="3.5" strokeLinecap="round"/>
-                <path d="M70 33C65 30 58 34 58 34" stroke="#451A03" strokeWidth="3.5" strokeLinecap="round"/>
-                {/* Gradients */}
-                <defs>
-                    <radialGradient id="mane-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(50 50) rotate(90) scale(45)">
-                        <stop offset="0" stopColor="#EA580C"/>
-                        <stop offset="1" stopColor="#991B1B"/>
-                    </radialGradient>
-                </defs>
-            </svg>
-        );
-
-        const SvgCali = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Ears */}
-                <path d="M25 22C18 12 10 25 22 32Z" fill="#F59E0B" stroke="#1E293B" strokeWidth="2.5"/>
-                <path d="M75 22C82 12 90 25 78 32Z" fill="#F59E0B" stroke="#1E293B" strokeWidth="2.5"/>
-                {/* Sleek Cheetah Face */}
-                <path d="M50 22C32 22 26 38 26 56C26 74 34 82 50 82C66 82 74 74 74 56C74 38 68 22 50 22Z" fill="#FBBF24" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Tear Mark Trails */}
-                <path d="M38 46C38 52 41 62 46 64" stroke="#111827" strokeWidth="3.5" strokeLinecap="round"/>
-                <path d="M62 46C62 52 59 62 54 64" stroke="#111827" strokeWidth="3.5" strokeLinecap="round"/>
-                {/* Muzzle */}
-                <path d="M50 56C42 56 40 66 50 66C60 66 58 56 50 56Z" fill="#FAFAFA" stroke="#1E293B" strokeWidth="2"/>
-                {/* Small Nose */}
-                <path d="M46 52H54L50 57L46 52Z" fill="#111827"/>
-                {/* Bright Amber Eyes */}
-                <ellipse cx="38" cy="40" rx="5" ry="6" fill="#F59E0B" stroke="#1E293B" strokeWidth="2"/>
-                <circle cx="38" cy="40" r="2.5" fill="#111827"/>
-                <ellipse cx="62" cy="40" rx="5" ry="6" fill="#F59E0B" stroke="#1E293B" strokeWidth="2"/>
-                <circle cx="62" cy="40" r="2.5" fill="#111827"/>
-                {/* Distinct Cheetah Spots */}
-                <circle cx="30" cy="30" r="3" fill="#1E293B"/>
-                <circle cx="70" cy="30" r="3" fill="#1E293B"/>
-                <circle cx="30" cy="62" r="3" fill="#1E293B"/>
-                <circle cx="70" cy="62" r="3" fill="#1E293B"/>
-                <circle cx="50" cy="30" r="2.5" fill="#1E293B"/>
-                <circle cx="34" cy="48" r="2" fill="#1E293B"/>
-                <circle cx="66" cy="48" r="2" fill="#1E293B"/>
-            </svg>
-        );
-
-        const SvgScoot = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Large Ears */}
-                <path d="M22 25C15 15 8 28 20 35Z" fill="#CBD5E1" stroke="#1E293B" strokeWidth="2.5"/>
-                <path d="M78 25C85 15 92 28 80 35Z" fill="#CBD5E1" stroke="#1E293B" strokeWidth="2.5"/>
-                {/* Face */}
-                <path d="M50 24C32 24 25 40 25 58C25 76 35 84 50 84C65 84 75 76 75 58C75 40 68 24 50 24Z" fill="#E2E8F0" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* White Fluffy Cheeks */}
-                <path d="M50 58C42 58 38 68 50 68C62 68 58 58 50 58Z" fill="#F8FAFC" stroke="#1E293B" strokeWidth="2"/>
-                {/* Ice Blue Eyes */}
-                <ellipse cx="37" cy="42" rx="6" ry="7" fill="#38BDF8" stroke="#1E293B" strokeWidth="2"/>
-                <circle cx="37" cy="42" r="2.5" fill="#0F172A"/>
-                <ellipse cx="63" cy="42" rx="6" ry="7" fill="#38BDF8" stroke="#1E293B" strokeWidth="2"/>
-                <circle cx="63" cy="42" r="2.5" fill="#0F172A"/>
-                {/* Leopard Rosettes & Spots */}
-                <path d="M45 30H55" stroke="#475569" strokeWidth="3" strokeLinecap="round"/>
-                <circle cx="31" cy="32" r="3.5" stroke="#475569" strokeWidth="2" fill="none"/>
-                <circle cx="69" cy="32" r="3.5" stroke="#475569" strokeWidth="2" fill="none"/>
-                <circle cx="29" cy="52" r="4" stroke="#475569" strokeWidth="2.5" fill="none"/>
-                <circle cx="71" cy="52" r="4" stroke="#475569" strokeWidth="2.5" fill="none"/>
-                <circle cx="50" cy="74" r="3" fill="#475569"/>
-                {/* Nose */}
-                <path d="M46 52H54L50 57L46 52Z" fill="#F43F5E"/>
-            </svg>
-        );
-
-        const SvgFritz = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Tiny Hippo Ears */}
-                <path d="M28 20C24 14 36 12 33 22Z" fill="#64748B" stroke="#1E293B" strokeWidth="2"/>
-                <path d="M72 20C76 14 64 12 67 22Z" fill="#64748B" stroke="#1E293B" strokeWidth="2"/>
-                {/* Heavy Hippo Head */}
-                <path d="M50 20C30 20 28 35 28 50H72C72 35 70 20 50 20Z" fill="#94A3B8" stroke="#1E293B" strokeWidth="3"/>
-                {/* Massive Snout */}
-                <path d="M50 44C26 44 24 55 24 70C24 85 34 88 50 88C66 88 76 85 76 70C76 55 74 44 50 44Z" fill="#475569" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Nostrils */}
-                <ellipse cx="40" cy="58" rx="4" ry="5" fill="#1E293B"/>
-                <ellipse cx="60" cy="58" rx="4" ry="5" fill="#1E293B"/>
-                {/* Small Eyes */}
-                <circle cx="38" cy="32" r="4" fill="#F59E0B" stroke="#1E293B" strokeWidth="1.5"/>
-                <circle cx="38" cy="32" r="2" fill="#111827"/>
-                <circle cx="62" cy="32" r="4" fill="#F59E0B" stroke="#1E293B" strokeWidth="1.5"/>
-                <circle cx="62" cy="32" r="2" fill="#111827"/>
-                {/* Tusks peaking out */}
-                <path d="M34 70L30 76H38L34 70Z" fill="#FAFAFA" stroke="#1E293B" strokeWidth="1.5"/>
-                <path d="M66 70L70 76H62L66 70Z" fill="#FAFAFA" stroke="#1E293B" strokeWidth="1.5"/>
-            </svg>
-        );
-
-        const SvgBahaty = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Tall Ears */}
-                <path d="M22 15C12 12 18 35 28 35Z" fill="#451A03" stroke="#1E293B" strokeWidth="2"/>
-                <path d="M78 15C88 12 82 35 72 35Z" fill="#451A03" stroke="#1E293B" strokeWidth="2"/>
-                {/* Okapi Head */}
-                <path d="M50 22C34 22 28 38 28 60C28 82 38 86 50 86C62 86 72 82 72 60C72 38 66 22 50 22Z" fill="#78350F" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* White/Cream Muzzle & Cheek Marks */}
-                <path d="M50 64C42 64 38 78 50 78C62 78 58 64 50 64Z" fill="#FEF3C7" stroke="#1E293B" strokeWidth="2.5"/>
-                {/* Slender Eyes */}
-                <ellipse cx="38" cy="44" rx="5" ry="6" fill="#1E293B"/>
-                <circle cx="39" cy="43" r="1.5" fill="#FAFAFA"/>
-                <ellipse cx="62" cy="44" rx="5" ry="6" fill="#1E293B"/>
-                <circle cx="61" cy="43" r="1.5" fill="#FAFAFA"/>
-                {/* Zebra Stripes Accent inside ears & neck backdrop */}
-                <path d="M12 55H25" stroke="#1E293B" strokeWidth="3.5" strokeLinecap="round"/>
-                <path d="M10 65H22" stroke="#1E293B" strokeWidth="3.5" strokeLinecap="round"/>
-                <path d="M88 55H75" stroke="#1E293B" strokeWidth="3.5" strokeLinecap="round"/>
-                <path d="M90 65H78" stroke="#1E293B" strokeWidth="3.5" strokeLinecap="round"/>
-                {/* Small Horns (Ossicones) */}
-                <path d="M44 14C44 10 42 10 44 20" stroke="#78350F" strokeWidth="5" strokeLinecap="round"/>
-                <path d="M56 14C56 10 58 10 56 20" stroke="#78350F" strokeWidth="5" strokeLinecap="round"/>
-            </svg>
-        );
-
-        const SvgJeffery = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Tall Alert Ears */}
-                <path d="M30 14C20 8 28 32 34 32Z" fill="#D97706" stroke="#1E293B" strokeWidth="2"/>
-                <path d="M70 14C80 8 72 32 66 32Z" fill="#D97706" stroke="#1E293B" strokeWidth="2"/>
-                {/* Wild Onager Head */}
-                <path d="M50 24C35 24 30 38 30 62C30 84 40 86 50 86C60 86 70 84 70 62C70 38 65 24 50 24Z" fill="#F59E0B" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Cream Muzzle */}
-                <path d="M50 68C42 68 38 78 50 78C62 78 58 68 50 68Z" fill="#FFFBEB" stroke="#1E293B" strokeWidth="2"/>
-                {/* Black Erect Mane */}
-                <path d="M50 6V24" stroke="#111827" strokeWidth="6" strokeLinecap="round"/>
-                {/* Eyes */}
-                <ellipse cx="38" cy="46" rx="5" ry="6" fill="#1E293B"/>
-                <circle cx="39" cy="45" r="1.5" fill="#FAFAFA"/>
-                <ellipse cx="62" cy="46" rx="5" ry="6" fill="#1E293B"/>
-                <circle cx="61" cy="45" r="1.5" fill="#FAFAFA"/>
-            </svg>
-        );
-
-        const SvgMoci = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Ears */}
-                <path d="M28 22C24 16 36 15 32 25Z" fill="#334155" stroke="#1E293B" strokeWidth="2"/>
-                <path d="M72 22C76 16 64 15 68 25Z" fill="#334155" stroke="#1E293B" strokeWidth="2"/>
-                {/* Body/Head base */}
-                <path d="M50 22C32 22 28 38 28 58C28 78 35 84 50 84C65 84 72 78 72 58C72 38 68 22 50 22Z" fill="#475569" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Characteristic Drooping Trunk-like Snout */}
-                <path d="M50 54C42 54 44 76 50 82C56 76 58 54 50 54Z" fill="#1E293B" stroke="#1E293B" strokeWidth="2.5" strokeLinejoin="round"/>
-                {/* Eyes */}
-                <circle cx="36" cy="44" r="4.5" fill="#1E293B"/>
-                <circle cx="36" cy="44" r="1.5" fill="#FAFAFA"/>
-                <circle cx="64" cy="44" r="4.5" fill="#1E293B"/>
-                <circle cx="64" cy="44" r="1.5" fill="#FAFAFA"/>
-            </svg>
-        );
-
-        const SvgHuaHua = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Round Black Ears */}
-                <circle cx="28" cy="24" r="12" fill="#111827" stroke="#1E293B" strokeWidth="2"/>
-                <circle cx="72" cy="24" r="12" fill="#111827" stroke="#1E293B" strokeWidth="2"/>
-                {/* Round Face */}
-                <path d="M50 24C30 24 24 40 24 60C24 80 34 84 50 84C66 84 76 80 76 60C76 40 70 24 50 24Z" fill="#FAFAFA" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Characteristic Black Eye Patches */}
-                <ellipse cx="36" cy="48" rx="8" ry="11" transform="rotate(-15 36 48)" fill="#111827"/>
-                <ellipse cx="64" cy="48" rx="8" ry="11" transform="rotate(15 64 48)" fill="#111827"/>
-                {/* Inner Eyes */}
-                <circle cx="36" cy="48" r="3" fill="#FAFAFA"/>
-                <circle cx="64" cy="48" r="3" fill="#FAFAFA"/>
-                {/* Small Nose */}
-                <ellipse cx="50" cy="60" rx="4" ry="3" fill="#111827"/>
-            </svg>
-        );
-
-        const SvgKimbunga = ({ className = "w-12 h-12" }) => (
-            <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Enormous Sweeping Ankoli Horns */}
-                <path d="M35 34C15 28 -5 14 2 2C6 -2 22 18 38 28Z" fill="#F8FAFC" stroke="#1E293B" strokeWidth="2.5" strokeLinejoin="round"/>
-                <path d="M65 34C85 28 105 14 98 2C94 -2 78 18 62 28Z" fill="#F8FAFC" stroke="#1E293B" strokeWidth="2.5" strokeLinejoin="round"/>
-                {/* Horn Tips */}
-                <path d="M2 2C-2 4 4 10 2 2Z" fill="#1E293B"/>
-                <path d="M98 2C102 4 96 10 98 2Z" fill="#1E293B"/>
-                {/* Cow Head */}
-                <path d="M50 24C36 24 32 38 32 60C32 82 40 86 50 86C60 86 68 82 68 60C68 38 64 24 50 24Z" fill="#B45309" stroke="#1E293B" strokeWidth="3" strokeLinejoin="round"/>
-                {/* Wide Muzzle */}
-                <path d="M50 66C42 66 38 78 50 78C62 78 58 66 50 66Z" fill="#FCA5A5" stroke="#1E293B" strokeWidth="2"/>
-                {/* Nostrils */}
-                <circle cx="44" cy="72" r="2" fill="#1E293B"/>
-                <circle cx="56" cy="72" r="2" fill="#1E293B"/>
-                {/* Eyes */}
-                <circle cx="38" cy="46" r="4.5" fill="#1E293B"/>
-                <circle cx="38" cy="46" r="1.5" fill="#FAFAFA"/>
-                <circle cx="62" cy="46" r="4.5" fill="#1E293B"/>
-                <circle cx="62" cy="46" r="1.5" fill="#FAFAFA"/>
-            </svg>
-        );
-
-        const RenderAnimal = ({ id, className = "w-12 h-12" }) => {
-            switch(id) {
-                case 'jeffery': return <SvgJeffery className={className} />;
-                case 'fritz': return <SvgFritz className={className} />;
-                case 'bahaty': return <SvgBahaty className={className} />;
-                case 'moci': return <SvgMoci className={className} />;
-                case 'huahua': return <SvgHuaHua className={className} />;
-                case 'camy': return <SvgCamy className={className} />;
-                case 'cali': return <SvgCali className={className} />;
-                case 'kimbunga': return <SvgKimbunga className={className} />;
-                case 'scoot': return <SvgScoot className={className} />;
-                default: return <SvgCamy className={className} />;
-            }
-        };
-
         const IconFlame = () => (
             <svg className="w-5 h-5 text-amber-500 fill-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fillRule="evenodd" d="M12.963 2.285a.75.75 0 0 1 .166.75 8.25 8.25 0 0 0 10.518 9.53a.75.75 0 0 1 .945.945A10.003 10.003 0 0 1 12 21.75c-5.523 0-10-4.477-10-10a9.96 9.96 0 0 1 8.012-9.719.75.75 0 0 1 .951.254l.001.001ZM12 4.5A7.5 7.5 0 0 0 4.5 12a7.5 7.5 0 0 0 7.5 7.5 7.5 7.5 0 0 0 7.5-7.5c0-.462-.042-.914-.122-1.353A10.002 10.002 0 0 1 12 4.5Z" clipRule="evenodd" />
@@ -289,7 +61,7 @@
         );
 
         const IconHeart = () => (
-            <svg className="w-5 h-5 fill-rose-500 text-rose-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+            <svg className="w-6 h-6 fill-rose-500 text-rose-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
             </svg>
         );
@@ -297,12 +69,6 @@
         const IconBell = () => (
             <svg className="w-5 h-5 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-            </svg>
-        );
-
-        const IconCheck = () => (
-            <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
             </svg>
         );
 
@@ -318,14 +84,44 @@
             </svg>
         );
 
+        const PushUpIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+                <rect x="2" y="18" width="20" height="2" rx="1" fill="currentColor" />
+                <path d="M12 2v6" />
+            </svg>
+        );
+
+        const SquatIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 3h12a1 1 0 0 1 1 1v2a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V4a1 1 0 0 1 1-1z" />
+                <path d="M8 10v10M16 10v10" />
+            </svg>
+        );
+
+        const SitUpIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 19a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4" />
+                <circle cx="12" cy="7" r="4" />
+            </svg>
+        );
+
+        const LungeIcon = () => (
+            <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 4l-4 4 4 4" />
+                <path d="M5 20h14" />
+                <path d="M9 8h6M12 8v10" />
+            </svg>
+        );
+
         const INITIAL_PROFILES = [
           {
             id: 'derek',
             name: 'Derek',
-            avatar: 'camy', // Camy the Lion
-            petName: 'Camy the Lion',
-            bgColor: 'from-amber-500 to-orange-600',
-            borderColor: 'border-amber-500',
+            avatar: '🐯',
+            petName: 'Tango the Tiger',
+            bgColor: 'from-orange-400 to-amber-500',
+            borderColor: 'border-orange-400',
             exercise: 'Push Ups',
             targetReps: 20,
             repsDone: 0,
@@ -336,8 +132,8 @@
           {
             id: 'alex',
             name: 'Alex',
-            avatar: 'scoot', // Scoot the Snow Leopard
-            petName: 'Scoot the Snow Leopard',
+            avatar: '🐻',
+            petName: 'Barnaby the Bear',
             bgColor: 'from-blue-400 to-cyan-500',
             borderColor: 'border-blue-400',
             exercise: 'Push Ups',
@@ -350,8 +146,8 @@
           {
             id: 'bridget',
             name: 'Bridget',
-            avatar: 'cali', // Cali the Cheetah
-            petName: 'Cali the Cheetah',
+            avatar: '🐼',
+            petName: 'Penny the Panda',
             bgColor: 'from-purple-400 to-pink-500',
             borderColor: 'border-purple-400',
             exercise: 'Push Ups',
@@ -364,15 +160,11 @@
         ];
 
         const CHIBI_NUDGES = [
-          "🦁 Camy roars: Unleash your pride's power! Let's get moving!",
-          "🐆 Cali dashes: Speed past your goals today! You've got this!",
-          "❄️ Scoot leaps: Jump into action! Let's keep our streak burning!",
-          "🦛 Fritz splashes: Make a huge impact today! Push ups time!",
-          "🦓 Bahaty strides: Stand tall and proud! Do your exercise!",
-          "🫏 Jeffery charges: Keep going strong, no stopping us!",
-          "🐗 Moci snout-pokes: A little effort goes a long way!",
-          "🐼 Hua Hua climbs: High up to victory! Do your reps!",
-          "🐂 Kimbunga charges: Face the challenge head on!"
+          "🦁 rawrs: Let's knock out those push ups!",
+          "🐼 munches: A little power push up makes a big smile!",
+          "🐯 pounces: Don't let our family push up streak break!",
+          "🐻 waves: High five! You can do your push ups!",
+          "🐰 hops: Quick, push up time! Our family bond is counting on you!"
         ];
 
         function App() {
@@ -392,7 +184,7 @@
           const [selectedExercise, setSelectedExercise] = React.useState('Push Ups');
 
           const [notifications, setNotifications] = React.useState([
-            { id: 1, text: "🦁 Derek's guide Camy completed his daily 20 Push Ups!", time: "1 hour ago", read: false }
+            { id: 1, text: "🐯 Derek completed his daily Push Ups!", time: "1 hour ago", read: false }
           ]);
           const [familyStreak, setFamilyStreak] = React.useState(() => {
             const saved = localStorage.getItem('gift_of_strength_family_streak');
@@ -406,24 +198,78 @@
           // Interactive logging temporary rep counters
           const [repCounter, setRepCounter] = React.useState(0);
 
-          const [friendsList, setFriendsList] = React.useState([
-            { id: 'derek', name: 'Derek', avatar: 'camy', title: 'Camy the Lion', status: 'Online', streak: 5, completed: false },
-            { id: 'bridget', name: 'Bridget', avatar: 'cali', title: 'Cali the Cheetah', status: 'Online', streak: 12, completed: false },
-            { id: 'alex', name: 'Alex', avatar: 'scoot', title: 'Scoot the Snow Leopard', status: 'Active', streak: 3, completed: false },
-            { id: 'fritz_user', name: 'Grandma Jo', avatar: 'fritz', title: 'Fritz the Hippo', status: 'Online', streak: 8, completed: true },
-            { id: 'bahaty_user', name: 'Cousin Tim', avatar: 'bahaty', title: 'Bahaty the Okapi', status: 'Active', streak: 21, completed: true }
-          ]);
-
-          const [globalUsersPool, setGlobalUsersPool] = React.useState([
-            { id: 'jeffery_user', name: 'Uncle Max', avatar: 'jeffery', title: 'Jeffery the Onager', status: 'Online', streak: 2, completed: false },
-            { id: 'moci_user', name: 'Cousin Jenny', avatar: 'moci', title: 'Moci the Tapir', status: 'Online', streak: 4, completed: false },
-            { id: 'huahua_user', name: 'Bestie Leo', avatar: 'huahua', title: 'Hua Hua the Panda', status: 'Active', streak: 11, completed: true },
-            { id: 'kimbunga_user', name: 'Coach Dan', avatar: 'kimbunga', title: 'Kimbunga the Ankoli Cow', status: 'Offline', streak: 9, completed: true }
-          ]);
-
           const [friendSearchQuery, setFriendSearchQuery] = React.useState("");
+          const [friendsList, setFriendsList] = React.useState([
+            { id: 'derek', name: 'Derek', avatar: '🐯', status: 'Online', streak: 5, completed: false },
+            { id: 'bridget', name: 'Bridget', avatar: '🐼', status: 'Online', streak: 12, completed: true },
+            { id: 'grandma', name: 'Grandma Jo', avatar: '🐨', status: 'Active', streak: 21, completed: true },
+            { id: 'uncle_bob', name: 'Uncle Bob', avatar: '🦁', status: 'Resting', streak: 8, completed: false }
+          ]);
+          
+          const [globalUsersPool, setGlobalUsersPool] = React.useState([
+            { id: 'coach_dan', name: 'Coach Dan', avatar: '🦊', status: 'Online', streak: 15, completed: true },
+            { id: 'cousin_jenny', name: 'Cousin Jenny', avatar: '🐰', status: 'Online', streak: 2, completed: false },
+            { id: 'bestie_leo', name: 'Leo', avatar: '🐸', status: 'Online', streak: 4, completed: false },
+            { id: 'aunt_sarah', name: 'Aunt Sarah', avatar: '🦄', status: 'Offline', streak: 9, completed: true }
+          ]);
 
-          // Save to local storage whenever state changes
+          const getStreakTier = (streak) => {
+            if (streak >= 20) return { label: 'Supernova', emoji: '☄️', color: 'bg-rose-500 text-white ring-2 ring-rose-300 animate-pulse font-black' };
+            if (streak >= 10) return { label: 'Lightning', emoji: '⚡', color: 'bg-purple-500 text-white font-bold' };
+            if (streak >= 5) return { label: 'Blaze', emoji: '🔥', color: 'bg-amber-400 text-slate-900 font-extrabold shadow-xs' };
+            return { label: 'Kindling', emoji: '🪵', color: 'bg-slate-200 text-slate-600' };
+          };
+
+          // Render horizontal progress loop of 7 mini-flames representing current weekly streak cycle
+          const renderStreakTrack = (streak) => {
+            const activeFlames = streak === 0 ? 0 : (streak % 7 === 0 ? 7 : streak % 7);
+            const loops = Math.floor(streak / 7);
+            
+            return (
+              <div className="flex flex-col items-start sm:items-end gap-1 mt-1">
+                <div className="flex items-center gap-1.5">
+                  {[...Array(7)].map((_, idx) => {
+                    const isLit = idx < activeFlames;
+                    return (
+                      <div 
+                        key={idx}
+                        title={`Day ${idx + 1} of streak week`}
+                        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
+                          isLit 
+                            ? 'bg-gradient-to-tr from-amber-400 to-orange-500 text-white shadow-md scale-110 animate-bounce' 
+                            : 'bg-slate-200 text-slate-400 opacity-40'
+                        }`}
+                        style={{ animationDelay: `${idx * 120}ms`, animationDuration: '2.5s' }}
+                      >
+                        🔥
+                      </div>
+                    );
+                  })}
+                </div>
+                {loops > 0 && (
+                  <span className="text-[9px] bg-gradient-to-r from-orange-500 to-rose-500 text-white px-2 py-0.5 rounded-full font-black uppercase tracking-wider scale-95 mt-0.5">
+                    {loops}x Week Loop Bonus! 🏆
+                  </span>
+                )}
+              </div>
+            );
+          };
+
+          const addFriend = (newFriend) => {
+            setFriendsList(prev => [...prev, newFriend]);
+            setGlobalUsersPool(prev => prev.filter(u => u.id !== newFriend.id));
+            playSound('complete');
+            
+            const systemNotif = {
+              id: Date.now(),
+              text: `🤝 You are now friends with ${newFriend.name}!`,
+              time: "Just now",
+              read: false,
+              special: true
+            };
+            setNotifications(prev => [systemNotif, ...prev]);
+          };
+
           React.useEffect(() => {
             localStorage.setItem('gift_of_strength_profiles', JSON.stringify(profiles));
           }, [profiles]);
@@ -481,11 +327,10 @@
             let targetProfile = profiles.find(p => p.id === cleanUser || p.name.toLowerCase().includes(cleanUser));
 
             if (!targetProfile) {
-              // Creating a custom player avatar on the fly from unused guides
               const availableAnimals = [
-                { id: 'fritz', avatar: 'fritz', petName: "Fritz the Hippo", bgColor: "from-slate-400 to-slate-600", border: "border-slate-400" },
-                { id: 'bahaty', avatar: 'bahaty', petName: "Bahaty the Okapi", bgColor: "from-amber-700 to-amber-900", border: "border-amber-700" },
-                { id: 'jeffery', avatar: 'jeffery', petName: "Jeffery the Onager", bgColor: "from-orange-400 to-amber-600", border: "border-orange-400" }
+                { avatar: "🦁", petName: "Leo the Lion", bgColor: "from-yellow-400 to-orange-500", border: "border-yellow-400" },
+                { avatar: "🦊", petName: "Finny the Fox", bgColor: "from-orange-500 to-red-500", border: "border-orange-500" },
+                { avatar: "🐸", petName: "Hopper the Frog", bgColor: "from-emerald-400 to-green-500", border: "border-emerald-400" }
               ];
               const randomAsset = availableAnimals[Math.floor(Math.random() * availableAnimals.length)];
               
@@ -523,28 +368,36 @@
             playSound('switch');
           };
 
-          const handleSelectExercise = (exerciseName) => {
+          const selectExerciseAndProceed = (exerciseName) => {
             setSelectedExercise(exerciseName);
-            // Dynamically scale targets based on movement to keep it fun and attainable
-            let targetReps = 15;
-            if (exerciseName === 'Squats') targetReps = 20;
-            if (exerciseName === 'Sit Ups') targetReps = 15;
-            if (exerciseName === 'Lunges') targetReps = 10;
-            
-            setProfiles(prev => prev.map(p => p.id === activeProfileId ? { ...p, exercise: exerciseName, targetReps: targetReps, repsDone: 0, completed: false } : p));
+            // Dynamically assign target reps based on selected exercise
+            let multiplier = 1;
+            if (exerciseName === 'Squats') multiplier = 1.2;
+            if (exerciseName === 'Sit Ups') multiplier = 1;
+            if (exerciseName === 'Lunges') multiplier = 0.8;
+
+            setProfiles(prev => prev.map(p => {
+              if (p.id === activeProfileId) {
+                return {
+                  ...p,
+                  exercise: exerciseName,
+                  targetReps: Math.round((p.id === 'alex' ? 10 : p.id === 'derek' ? 20 : 15) * multiplier)
+                };
+              }
+              return p;
+            }));
+
             setRepCounter(0);
-            setCurrentView('log');
             playSound('switch');
+            setCurrentView('log');
           };
 
-          // Handle interactive push up counter tapping
           const incrementRep = () => {
             if (currentProfile.completed) return;
             const newRepCount = repCounter + 1;
             setRepCounter(newRepCount);
             playSound('rep');
 
-            // Save rep progress instantly
             setProfiles(prev => prev.map(p => p.id === activeProfileId ? { ...p, repsDone: newRepCount } : p));
 
             if (newRepCount >= currentProfile.targetReps) {
@@ -574,14 +427,11 @@
 
             const newNotif = {
               id: Date.now(),
-              text: `🎉 ${currentProfile.name} smashed all ${currentProfile.targetReps} daily ${currentProfile.exercise} with ${currentProfile.petName}!`,
+              text: `${currentProfile.avatar} ${currentProfile.name} completed their daily ${selectedExercise}!`,
               time: "Just now",
               read: false
             };
             setNotifications(prev => [newNotif, ...prev]);
-
-            // Sync friend lists completions
-            setFriendsList(prev => prev.map(f => f.id === activeProfileId ? { ...f, completed: true, streak: f.streak + 1 } : f));
 
             setTimeout(() => {
               setProfiles(latestProfiles => {
@@ -590,7 +440,7 @@
                   setFamilyStreak(s => s + 1);
                   const streakNotif = {
                     id: Date.now() + 1,
-                    text: `🎉 Incredible! Everyone did their workouts today! Family Bond upgraded to a ${familyStreak + 1} day streak! ❤️`,
+                    text: `🎉 Incredible! Everyone did their exercises today! Family Bond upgraded to a ${familyStreak + 1} day streak! ❤️`,
                     time: "Just now",
                     read: false,
                     special: true
@@ -607,7 +457,7 @@
             
             const nudgeNotif = {
               id: Date.now(),
-              text: `${currentProfile.name} sent an alert to ${targetProfile.name}: "${message}"`,
+              text: `${currentProfile.avatar} ${currentProfile.name} sent a reminder to ${targetProfile.avatar} ${targetProfile.name}: "${message}"`,
               time: "Just now",
               read: false,
               nudge: true
@@ -619,69 +469,12 @@
             setCustomNudgeMessage("");
           };
 
-          const addFriend = (newFriend) => {
-            setFriendsList(prev => [...prev, newFriend]);
-            setGlobalUsersPool(prev => prev.filter(u => u.id !== newFriend.id));
-            playSound('complete');
-            
-            const systemNotif = {
-              id: Date.now(),
-              text: `🤝 You are now teammates with ${newFriend.name}!`,
-              time: "Just now",
-              read: false,
-              special: true
-            };
-            setNotifications(prev => [systemNotif, ...prev]);
-          };
-
-          const getStreakTier = (streak) => {
-            if (streak >= 20) return { label: 'Supernova', emoji: '☄️', color: 'bg-rose-500 text-white ring-2 ring-rose-300 animate-pulse font-black' };
-            if (streak >= 10) return { label: 'Lightning', emoji: '⚡', color: 'bg-purple-500 text-white font-bold' };
-            if (streak >= 5) return { label: 'Blaze', emoji: '🔥', color: 'bg-amber-400 text-slate-900 font-extrabold shadow-sm' };
-            return { label: 'Kindling', emoji: '🪵', color: 'bg-slate-200 text-slate-600' };
-          };
-
-          const renderStreakTrack = (streak) => {
-            const activeFlames = streak === 0 ? 0 : (streak % 7 === 0 ? 7 : streak % 7);
-            const loops = Math.floor(streak / 7);
-            
-            return (
-              <div className="flex flex-col items-start sm:items-end gap-1 mt-1">
-                <div className="flex items-center gap-1.5">
-                  {[...Array(7)].map((_, idx) => {
-                    const isLit = idx < activeFlames;
-                    return (
-                      <div 
-                        key={idx}
-                        title={`Day ${idx + 1} of streak week`}
-                        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
-                          isLit 
-                            ? 'bg-gradient-to-tr from-amber-400 to-orange-500 text-white shadow-md scale-110 animate-bounce' 
-                            : 'bg-slate-200 text-slate-400 opacity-40'
-                        }`}
-                        style={{ animationDelay: `${idx * 120}ms`, animationDuration: '2.5s' }}
-                      >
-                        🔥
-                      </div>
-                    );
-                  })}
-                </div>
-                {loops > 0 && (
-                  <span className="text-[9px] bg-gradient-to-r from-orange-500 to-rose-500 text-white px-2 py-0.5 rounded-full font-black uppercase tracking-wider scale-95 mt-0.5">
-                    {loops}x Week Loop Bonus! 🏆
-                  </span>
-                )}
-              </div>
-            );
-          };
-
           const resetDay = () => {
             setProfiles(prev => prev.map(p => ({ ...p, completed: false, repsDone: 0 })));
             setRepCounter(0);
-            setFriendsList(prev => prev.map(f => f.id === 'bridget' || f.id === 'alex' ? { ...f, completed: false } : f));
             const systemNotif = {
               id: Date.now(),
-              text: "🌅 A new day has dawned! Push ups have been reset. Let's protect our streaks!",
+              text: "🌅 A new day has dawned! Exercises have been reset. Get ready to build that strength!",
               time: "Just now",
               read: false,
               special: true
@@ -689,11 +482,9 @@
             setNotifications(prev => [systemNotif, ...prev]);
           };
 
-          // Render Login Screen if unauthenticated
           if (!isLoggedIn) {
             return (
               <div className="min-h-screen bg-slate-950 flex flex-col justify-between p-4 relative overflow-hidden text-slate-100 font-sans">
-                {/* Radial background glow */}
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
                 
                 <div className="flex-1 flex flex-col items-center justify-center">
@@ -714,7 +505,7 @@
                         <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Username</label>
                         <input 
                           type="text" 
-                          placeholder="Type 'Derek', 'Bridget', 'Alex' or your own"
+                          placeholder="Type 'Alex', 'Bridget', 'Derek' or your own"
                           className="w-full bg-slate-950/80 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 placeholder-slate-600 text-sm transition-all"
                           value={usernameInput}
                           onChange={(e) => setUsernameInput(e.target.value)}
@@ -729,7 +520,6 @@
                           placeholder="••••••••"
                           className="w-full bg-slate-950/80 border border-slate-800 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 placeholder-slate-600 text-sm transition-all"
                           value={passwordInput}
-                          onChange={(e) => setPasswordInput(e.target.value)}
                         />
                       </div>
 
@@ -756,17 +546,14 @@
 
           return (
             <div className="min-h-screen bg-amber-50 text-slate-800 font-sans pb-12 transition-all fade-in">
-              {/* Celebration Animation Pop-up */}
               {celebration && (
                 <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                   <div className="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl border-4 border-emerald-400 relative overflow-hidden transform scale-100 transition-transform">
                     <div className="absolute -right-8 -top-8 w-24 h-24 bg-yellow-300 rounded-full opacity-50 blur-xl"></div>
-                    <div className="flex justify-center mb-4">
-                      <RenderAnimal id={celebration.avatar} className="w-28 h-28 transform animate-bounce" />
-                    </div>
+                    <div className="text-7xl mb-4 animate-bounce">{celebration.avatar}</div>
                     <h3 className="text-2xl font-black text-emerald-600 mb-2">UTTERLY AWESOME!</h3>
                     <p className="text-slate-600 font-medium mb-4">
-                      {celebration.petName} jumps with excitement! You completed all <span className="font-bold text-slate-800">{celebration.targetReps} {celebration.exercise}</span>.
+                      {celebration.petName} is doing backflips! You completed all <span className="font-bold text-slate-800">{celebration.targetReps} {selectedExercise}</span>.
                     </p>
                     <div className="bg-amber-100 rounded-full px-4 py-2 inline-flex items-center gap-1.5 mb-6 text-amber-700 font-bold">
                       <IconFlame />
@@ -786,9 +573,7 @@
               <header className="bg-white border-b-4 border-amber-200 sticky top-0 z-30">
                 <div className="max-w-4xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="bg-amber-400 p-2 rounded-2xl shadow-inner cursor-pointer" onClick={() => setCurrentView('home')}>
-                      <RenderAnimal id={currentProfile.avatar} className="w-10 h-10" />
-                    </div>
+                    <div className="bg-amber-400 p-2.5 rounded-2xl shadow-inner text-2xl cursor-pointer" onClick={() => setCurrentView('home')}>🎁</div>
                     <div>
                       <h1 className="text-2xl font-black text-amber-600 tracking-tight leading-none">
                         Gift of Strength
@@ -829,28 +614,26 @@
 
               <main className="max-w-4xl mx-auto px-4 mt-6">
                 
-                {/* 1. HOME SCREEN - Dashboard featuring 4 clean action cards */}
                 {currentView === 'home' && (
                   <div className="fade-in space-y-6">
-                    
-                    {/* Profile Toggle Belt - Responsive Swipeable Slider on Mobile */}
-                    <div className="bg-amber-100/50 border-2 border-amber-200/60 rounded-3xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    {/* Profile Toggle Belt */}
+                    <div className="bg-amber-100/50 border-2 border-amber-200/60 rounded-3xl p-4 flex items-center justify-between gap-3">
                       <span className="text-xs font-bold text-amber-800 uppercase tracking-wide">Testing Profile:</span>
-                      <div className="flex gap-2 overflow-x-auto scrollbar-none pb-1 sm:pb-0">
+                      <div className="flex gap-2">
                         {profiles.map(p => (
                           <button
                             key={p.id}
                             onClick={() => handleProfileChange(p.id)}
-                            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 ${p.id === activeProfileId ? 'bg-amber-500 text-white shadow-sm' : 'bg-white hover:bg-slate-100'}`}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${p.id === activeProfileId ? 'bg-amber-500 text-white shadow-sm' : 'bg-white hover:bg-slate-100'}`}
                           >
-                            <RenderAnimal id={p.avatar} className="w-5 h-5" />
-                            <span>{p.name}</span>
+                            {p.avatar} {p.name}
                           </button>
                         ))}
                       </div>
                     </div>
 
-                    {/* PROMINENT HEADER SECTION: Total Family Streak Days Visual Card */}
+                    {}
+                    {/* Family Streak Dashboard Card */}
                     <div className="bg-white border-4 border-amber-200 rounded-3xl p-6 shadow-md relative overflow-hidden fade-in">
                       <div className="absolute -right-6 -top-6 text-9xl opacity-10 pointer-events-none select-none animate-pulse">🔥</div>
                       
@@ -881,7 +664,7 @@
                               }`}
                             >
                               <div className="relative">
-                                <RenderAnimal id={p.avatar} className="w-12 h-12" />
+                                <span className="text-4xl select-none block">{p.avatar}</span>
                                 {p.completed ? (
                                   <span className="absolute -bottom-1 -right-1 bg-emerald-500 text-white rounded-full p-1 border-2 border-white shadow-md">
                                     <IconCheck />
@@ -908,7 +691,6 @@
                       {/* CARD 1: Log Daily Exercise */}
                       <button
                         onClick={() => {
-                          setRepCounter(currentProfile.repsDone);
                           setCurrentView('select_exercise');
                         }}
                         className="group bg-gradient-to-br from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-emerald-600/50 flex flex-col justify-between min-h-[160px]"
@@ -919,7 +701,7 @@
                         <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">✨</span>
                         <div>
                           <h3 className="text-xl font-extrabold tracking-tight">Log Daily Exercise</h3>
-                          <p className="text-xs text-emerald-100 mt-1 font-medium">Record your daily reps & build your streak!</p>
+                          <p className="text-xs text-emerald-100 mt-1 font-medium">Choose an exercise & start tracking!</p>
                         </div>
                       </button>
 
@@ -944,7 +726,7 @@
                         className="group bg-gradient-to-br from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-orange-600/50 flex flex-col justify-between min-h-[160px]"
                       >
                         <div className="absolute right-4 top-4 text-orange-100/30 group-hover:scale-110 transition-transform">
-                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"></path></svg>
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"></path></svg>
                         </div>
                         <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">📢</span>
                         <div>
@@ -959,7 +741,7 @@
                         className="group bg-gradient-to-br from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-pink-600/50 flex flex-col justify-between min-h-[160px]"
                       >
                         <div className="absolute right-4 top-4 text-pink-100/30 group-hover:scale-110 transition-transform">
-                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path></svg>
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z"></path></svg>
                         </div>
                         <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">❤️</span>
                         <div>
@@ -986,7 +768,7 @@
                   </div>
                 )}
 
-                {/* 2. SUB-VIEW: SELECT EXERCISE PATH */}
+                {}
                 {currentView === 'select_exercise' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -996,52 +778,78 @@
                       <IconArrowLeft /> Back to Dashboard
                     </button>
 
-                    <div className="bg-white rounded-3xl p-6 border-2 border-slate-100 shadow-md">
-                      <h3 className="text-xl font-black text-slate-800 mb-2">Select Your Daily Mission</h3>
-                      <p className="text-xs text-slate-500 mb-6">Pick one of our four clean, core movements to log reps with your animal companion guide!</p>
+                    <div className="bg-white rounded-3xl p-8 border-2 border-amber-200/60 shadow-lg space-y-6">
+                      <div className="text-center max-w-md mx-auto">
+                        <span className="text-xs font-bold bg-amber-100 text-amber-800 py-1 px-3 rounded-full uppercase tracking-widest">Exercise Path</span>
+                        <h2 className="text-2xl font-black text-slate-800 mt-3">Choose Your Movement</h2>
+                        <p className="text-sm text-slate-500 mt-1">Select an active exercise to log. Tango, Barnaby, and Penny are waiting to count your reps!</p>
+                      </div>
 
-                      <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                      {/* 2x2 Clean Uniform Grid */}
+                      <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4">
+                        
                         {/* Option 1: Push Ups */}
-                        <button 
-                          onClick={() => handleSelectExercise('Push Ups')}
-                          className="p-5 border-4 border-slate-100 hover:border-emerald-400 bg-slate-50/50 hover:bg-emerald-50/20 rounded-2xl text-center transition-all group active:scale-95 flex flex-col items-center justify-center gap-2"
+                        <button
+                          onClick={() => selectExerciseAndProceed('Push Ups')}
+                          className="group bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-500 hover:to-teal-600 border-2 border-emerald-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
                         >
-                          <span className="text-4xl filter group-hover:scale-110 transition-transform">💪</span>
-                          <span className="font-extrabold text-sm text-slate-700">Push Ups</span>
+                          <div className="text-emerald-500 group-hover:text-white transition-colors">
+                            <PushUpIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Push Ups</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-emerald-100 mt-1.5 transition-colors">Upper Body Power</p>
+                          </div>
                         </button>
 
                         {/* Option 2: Squats */}
-                        <button 
-                          onClick={() => handleSelectExercise('Squats')}
-                          className="p-5 border-4 border-slate-100 hover:border-cyan-400 bg-slate-50/50 hover:bg-cyan-50/20 rounded-2xl text-center transition-all group active:scale-95 flex flex-col items-center justify-center gap-2"
+                        <button
+                          onClick={() => selectExerciseAndProceed('Squats')}
+                          className="group bg-gradient-to-br from-blue-50 to-cyan-50 hover:from-blue-500 hover:to-cyan-600 border-2 border-blue-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
                         >
-                          <span className="text-4xl filter group-hover:scale-110 transition-transform">🦵</span>
-                          <span className="font-extrabold text-sm text-slate-700">Squats</span>
+                          <div className="text-blue-500 group-hover:text-white transition-colors">
+                            <SquatIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Squats</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-blue-100 mt-1.5 transition-colors">Lower Body Strength</p>
+                          </div>
                         </button>
 
                         {/* Option 3: Sit Ups */}
-                        <button 
-                          onClick={() => handleSelectExercise('Sit Ups')}
-                          className="p-5 border-4 border-slate-100 hover:border-indigo-400 bg-slate-50/50 hover:bg-indigo-50/20 rounded-2xl text-center transition-all group active:scale-95 flex flex-col items-center justify-center gap-2"
+                        <button
+                          onClick={() => selectExerciseAndProceed('Sit Ups')}
+                          className="group bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-500 hover:to-pink-600 border-2 border-purple-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
                         >
-                          <span className="text-4xl filter group-hover:scale-110 transition-transform">🧘</span>
-                          <span className="font-extrabold text-sm text-slate-700">Sit Ups</span>
+                          <div className="text-purple-500 group-hover:text-white transition-colors">
+                            <SitUpIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Sit Ups</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-purple-100 mt-1.5 transition-colors">Core Alignment</p>
+                          </div>
                         </button>
 
                         {/* Option 4: Lunges */}
-                        <button 
-                          onClick={() => handleSelectExercise('Lunges')}
-                          className="p-5 border-4 border-slate-100 hover:border-purple-400 bg-slate-50/50 hover:bg-purple-50/20 rounded-2xl text-center transition-all group active:scale-95 flex flex-col items-center justify-center gap-2"
+                        <button
+                          onClick={() => selectExerciseAndProceed('Lunges')}
+                          className="group bg-gradient-to-br from-amber-50 to-orange-50 hover:from-amber-500 hover:to-orange-600 border-2 border-amber-200 hover:border-transparent rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
                         >
-                          <span className="text-4xl filter group-hover:scale-110 transition-transform">🏃</span>
-                          <span className="font-extrabold text-sm text-slate-700">Lunges</span>
+                          <div className="text-amber-600 group-hover:text-white transition-colors">
+                            <LungeIcon />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-slate-800 group-hover:text-white text-lg leading-none transition-colors">Lunges</h4>
+                            <p className="text-xs text-slate-500 group-hover:text-amber-100 mt-1.5 transition-colors">Balance & Balance</p>
+                          </div>
                         </button>
+
                       </div>
                     </div>
                   </div>
                 )}
 
-                {/* 3. SUB-VIEW: LOG EXERCISE (Interactive Rep Counter) */}
+                {}
                 {currentView === 'log' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -1054,15 +862,15 @@
                     <div className={`bg-gradient-to-b ${currentProfile.bgColor} text-white p-8 rounded-3xl text-center shadow-xl relative overflow-hidden`}>
                       <span className="text-xs font-extrabold bg-white/20 px-3 py-1 rounded-full uppercase tracking-widest">Interactive Rep Counter</span>
                       
-                      <div className="flex justify-center my-6 select-none">
-                        <RenderAnimal id={currentProfile.avatar} className="w-28 h-28 transform animate-bounce" />
+                      <div className="text-7xl my-6 animate-bounce select-none">
+                        {currentProfile.avatar}
                       </div>
 
                       <h2 className="text-3xl font-black">{currentProfile.name}</h2>
-                      <p className="text-sm text-white/80 mt-1">Ready with guide <span className="font-bold underline">{currentProfile.petName}</span></p>
+                      <p className="text-sm text-white/80 mt-1">Ready with <span className="font-bold underline">{currentProfile.petName}</span></p>
 
                       <div className="my-8 bg-white/10 backdrop-blur-md p-6 rounded-2xl max-w-sm mx-auto border border-white/20">
-                        <p className="text-xs font-bold uppercase tracking-wider text-white/70">Your {currentProfile.exercise} Target</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-white/70">Your {selectedExercise} Target</p>
                         <div className="flex items-baseline justify-center gap-2 mt-2">
                           <span className="text-5xl font-black">{repCounter}</span>
                           <span className="text-xl text-white/60">/ {currentProfile.targetReps} reps</span>
@@ -1088,8 +896,8 @@
                             onClick={incrementRep}
                             className="w-full bg-white text-slate-900 text-xl font-black py-6 px-8 rounded-2xl shadow-xl hover:scale-102 active:scale-95 transition-all flex flex-col items-center justify-center gap-1 cursor-pointer"
                           >
-                            <span className="text-2xl">💪 Tap For Each {currentProfile.exercise}!</span>
-                            <span className="text-xs font-medium text-slate-500">Perform the exercise and click to record!</span>
+                            <span className="text-2xl">💪 Tap For Each {selectedExercise}!</span>
+                            <span className="text-xs font-medium text-slate-500">Do your movement then click this!</span>
                           </button>
 
                           <button 
@@ -1104,7 +912,7 @@
                   </div>
                 )}
 
-                {/* 4. SUB-VIEW: DAILY CHALLENGE (Cooperative goal) */}
+                {}
                 {currentView === 'challenge' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -1117,8 +925,8 @@
                     <div className="bg-white rounded-3xl p-6 border-2 border-slate-100 shadow-sm space-y-6">
                       <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                         <div>
-                          <h2 className="text-2xl font-black text-slate-800">Family Exercise Challenge</h2>
-                          <p className="text-xs text-slate-500">Every single push up from Bridget, Derek, and Alex counts!</p>
+                          <h2 className="text-2xl font-black text-slate-800">Family Workout Challenge</h2>
+                          <p className="text-xs text-slate-500">Every single exercise from Bridget, Derek, and Alex counts!</p>
                         </div>
                         <span className="text-4xl">🏆</span>
                       </div>
@@ -1132,12 +940,12 @@
                         </div>
                       </div>
 
-                      {/* Cumulative pushup calculation */}
+                      {/* Cumulative progress calculation */}
                       <div>
                         <div className="flex justify-between items-baseline mb-2">
                           <span className="text-sm font-extrabold text-slate-600">Today's Team Progress</span>
                           <span className="text-lg font-black text-indigo-600">
-                            {profiles.reduce((sum, p) => sum + p.repsDone, 0)} / {profiles.reduce((sum, p) => sum + p.targetReps, 0)} Reps Done
+                            {profiles.reduce((sum, p) => sum + p.repsDone, 0)} / {profiles.reduce((sum, p) => sum + p.targetReps, 0)} Movements Done
                           </span>
                         </div>
                         <div className="w-full bg-slate-100 h-4 rounded-full overflow-hidden border border-slate-200">
@@ -1155,7 +963,7 @@
                         <p className="text-xs text-slate-400 font-medium">Use this helper tool to simulate testing next day's streak loop.</p>
                         <button 
                           onClick={resetDay}
-                          className="bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-4 rounded-xl text-xs font-bold transition-all"
+                          className="bg-slate-100 hover:bg-slate-200 text-slate-700 py-2.5 px-4 rounded-xl text-xs font-bold transition-all"
                         >
                           🌅 Simulate Next Day
                         </button>
@@ -1164,7 +972,7 @@
                   </div>
                 )}
 
-                {/* 5. SUB-VIEW: MESS WITH FAM (Playful Chibi Nudges) */}
+                {}
                 {currentView === 'nudge' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -1189,7 +997,7 @@
                               className={`p-4 rounded-2xl border-2 flex items-center justify-between transition-all ${isSelf ? 'border-dashed border-slate-200 bg-slate-50 opacity-60' : 'bg-white border-slate-100'}`}
                             >
                               <div className="flex items-center gap-3">
-                                <RenderAnimal id={p.avatar} className="w-12 h-12" />
+                                <span className="text-4xl bg-amber-50 p-2.5 rounded-xl border border-amber-100">{p.avatar}</span>
                                 <div>
                                   <h4 className="font-extrabold text-slate-700">{p.name}</h4>
                                   <p className="text-xs text-slate-500">{p.completed ? "Already finished! 🎉" : `Pending ${p.exercise}`}</p>
@@ -1219,7 +1027,7 @@
                             <h3 className="text-xl font-bold text-slate-800">Pick an Animal Messenger for {activeNudgeUser.name}</h3>
                             <p className="text-sm text-slate-500">Send custom simulated sound & notification roars!</p>
                           </div>
-                          <RenderAnimal id={activeNudgeUser.avatar} className="w-14 h-14" />
+                          <span className="text-4xl">{activeNudgeUser.avatar}</span>
                         </div>
                         
                         <div className="mb-4 space-y-4">
@@ -1256,7 +1064,7 @@
                   </div>
                 )}
 
-                {/* 6. SUB-VIEW: FRIENDS LIST (Streaks Connection Deck) */}
+                {}
                 {currentView === 'friends' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -1272,15 +1080,15 @@
                     <div className="bg-white rounded-3xl p-6 border-2 border-slate-100 shadow-lg space-y-6">
                       <div className="flex justify-between items-center pb-4 border-b border-slate-100">
                         <div>
-                          <h2 className="text-2xl font-black text-slate-800">Teammate & Friends Streaks</h2>
-                          <p className="text-xs text-slate-500">Track active daily exercise streaks side-by-side!</p>
+                          <h2 className="text-2xl font-black text-slate-800">Community & Friends</h2>
+                          <p className="text-xs text-slate-500">Add friends, view completion statuses, and stay connected!</p>
                         </div>
                         <span className="text-4xl">❤️</span>
                       </div>
 
                       {/* Top Section: Search Bar & Interactive Search Results */}
                       <div className="space-y-3">
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider">Find Teammates</label>
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider">Add New Friends</label>
                         <div className="relative">
                           <input 
                             type="text" 
@@ -1299,7 +1107,7 @@
                             {globalUsersPool.filter(user => 
                               user.name.toLowerCase().includes(friendSearchQuery.toLowerCase())
                             ).length === 0 ? (
-                              <p className="text-xs text-slate-500 italic">No users found matching "{friendSearchQuery}". Try searching "Uncle", "Cousin", "Leo" or "Dan"!</p>
+                              <p className="text-xs text-slate-500 italic">No users found matching "{friendSearchQuery}". Try searching "Coach", "Jenny", or "Sarah"!</p>
                             ) : (
                               <div className="space-y-2">
                                 {globalUsersPool
@@ -1307,10 +1115,10 @@
                                   .map(user => (
                                     <div key={user.id} className="flex items-center justify-between p-2 bg-white rounded-xl border border-slate-100">
                                       <div className="flex items-center gap-3">
-                                        <RenderAnimal id={user.avatar} className="w-10 h-10" />
+                                        <span className="text-2xl bg-slate-100 p-1 rounded-lg">{user.avatar}</span>
                                         <div>
                                           <h5 className="text-xs font-bold text-slate-700">{user.name}</h5>
-                                          <p className="text-[10px] text-slate-400">{user.title} • Streak: {user.streak}🔥</p>
+                                          <p className="text-[10px] text-slate-400">Streak: {user.streak}🔥</p>
                                         </div>
                                       </div>
                                       <button 
@@ -1328,9 +1136,9 @@
                         )}
                       </div>
 
-                      {/* Main Section: Friends List showing visual weekly 7-flame tracks */}
+                      {/* Main Section: Clean, scrollable Friends List with detailed visual streak meters */}
                       <div className="space-y-3">
-                        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">My Teammates List</h3>
+                        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">My Friends List</h3>
                         <div className="space-y-4 max-h-[380px] overflow-y-auto pr-1">
                           {friendsList.map(p => {
                             const tier = getStreakTier(p.streak);
@@ -1340,9 +1148,7 @@
                                 className="p-4 bg-slate-50 border border-slate-100 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-100/30 transition-all shadow-sm"
                               >
                                 <div className="flex items-center gap-3.5">
-                                  <div className="bg-white p-2 rounded-2xl shadow-xs border border-slate-200/60">
-                                    <RenderAnimal id={p.avatar} className="w-14 h-14" />
-                                  </div>
+                                  <span className="text-4xl bg-white p-3 rounded-2xl shadow-xs border border-slate-200/60">{p.avatar}</span>
                                   <div>
                                     <div className="flex items-center gap-2">
                                       <h4 className="font-extrabold text-slate-800 text-base leading-none">{p.name}</h4>
