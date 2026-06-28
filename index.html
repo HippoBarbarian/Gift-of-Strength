@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gift of Strength - Family Fitness</title>
     <!-- Tailwind CSS for modern utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,10 +15,12 @@
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
         /* Custom scrollbar styling for simulated logs */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
+            height: 4px;
         }
         ::-webkit-scrollbar-track {
             background: #fef3c7;
@@ -30,11 +32,19 @@
         }
         /* Fade-in transition animations */
         .fade-in {
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        /* Hide scrollbars for profiles selector slider on mobile phones */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -44,7 +54,6 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // Custom SVG icons to eliminate third-party bundle dependency bugs
         const IconFlame = () => (
             <svg className="w-5 h-5 text-amber-500 fill-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fillRule="evenodd" d="M12.963 2.285a.75.75 0 0 1 .166.75 8.25 8.25 0 0 0 10.518 9.53a.75.75 0 0 1 .945.945A10.003 10.003 0 0 1 12 21.75c-5.523 0-10-4.477-10-10a9.96 9.96 0 0 1 8.012-9.719.75.75 0 0 1 .951.254l.001.001ZM12 4.5A7.5 7.5 0 0 0 4.5 12a7.5 7.5 0 0 0 7.5 7.5 7.5 7.5 0 0 0 7.5-7.5c0-.462-.042-.914-.122-1.353A10.002 10.002 0 0 1 12 4.5Z" clipRule="evenodd" />
@@ -75,7 +84,6 @@
             </svg>
         );
 
-        // Movement Exercise Icons
         const PushUpIcon = () => (
             <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 15l-6-6-6 6" />
@@ -109,8 +117,7 @@
         const INITIAL_PROFILES = [
           {
             id: 'derek',
-            name: 'Derek (Dad)',
-            role: 'Parent',
+            name: 'Derek',
             avatar: '🐯',
             petName: 'Tango the Tiger',
             bgColor: 'from-orange-400 to-amber-500',
@@ -124,8 +131,7 @@
           },
           {
             id: 'alex',
-            name: 'Alex (Son)',
-            role: 'Kid',
+            name: 'Alex',
             avatar: '🐻',
             petName: 'Barnaby the Bear',
             bgColor: 'from-blue-400 to-cyan-500',
@@ -139,8 +145,7 @@
           },
           {
             id: 'bridget',
-            name: 'Bridget (Mom)',
-            role: 'Parent',
+            name: 'Bridget',
             avatar: '🐼',
             petName: 'Penny the Panda',
             bgColor: 'from-purple-400 to-pink-500',
@@ -195,20 +200,19 @@
 
           const [friendSearchQuery, setFriendSearchQuery] = React.useState("");
           const [friendsList, setFriendsList] = React.useState([
-            { id: 'derek', name: 'Derek (Dad)', avatar: '🐯', role: 'Parent', status: 'Online', streak: 5, completed: false },
-            { id: 'bridget', name: 'Bridget (Mom)', avatar: '🐼', role: 'Parent', status: 'Online', streak: 12, completed: true },
-            { id: 'grandma', name: 'Grandma Jo', avatar: '🐨', role: 'Grandmother', status: 'Active', streak: 21, completed: true },
-            { id: 'uncle_bob', name: 'Uncle Bob', avatar: '🦁', role: 'Uncle', status: 'Resting', streak: 8, completed: false }
+            { id: 'derek', name: 'Derek', avatar: '🐯', status: 'Online', streak: 5, completed: false },
+            { id: 'bridget', name: 'Bridget', avatar: '🐼', status: 'Online', streak: 12, completed: true },
+            { id: 'grandma', name: 'Grandma Jo', avatar: '🐨', status: 'Active', streak: 21, completed: true },
+            { id: 'uncle_bob', name: 'Uncle Bob', avatar: '🦁', status: 'Resting', streak: 8, completed: false }
           ]);
           
           const [globalUsersPool, setGlobalUsersPool] = React.useState([
-            { id: 'coach_dan', name: 'Coach Dan', avatar: '🦊', role: 'Trainer', status: 'Online', streak: 15, completed: true },
-            { id: 'cousin_jenny', name: 'Cousin Jenny', avatar: '🐰', role: 'Cousin', status: 'Online', streak: 2, completed: false },
-            { id: 'bestie_leo', name: 'Leo (Best Friend)', avatar: '🐸', role: 'Friend', status: 'Online', streak: 4, completed: false },
-            { id: 'aunt_sarah', name: 'Aunt Sarah', avatar: '🦄', role: 'Aunt', status: 'Offline', streak: 9, completed: true }
+            { id: 'coach_dan', name: 'Coach Dan', avatar: '🦊', status: 'Online', streak: 15, completed: true },
+            { id: 'cousin_jenny', name: 'Cousin Jenny', avatar: '🐰', status: 'Online', streak: 2, completed: false },
+            { id: 'bestie_leo', name: 'Leo', avatar: '🐸', status: 'Online', streak: 4, completed: false },
+            { id: 'aunt_sarah', name: 'Aunt Sarah', avatar: '🦄', status: 'Offline', streak: 9, completed: true }
           ]);
 
-          // Helper to calculate visual streak progression tiers
           const getStreakTier = (streak) => {
             if (streak >= 20) return { label: 'Supernova', emoji: '☄️', color: 'bg-rose-500 text-white ring-2 ring-rose-300 animate-pulse font-black' };
             if (streak >= 10) return { label: 'Lightning', emoji: '⚡', color: 'bg-purple-500 text-white font-bold' };
@@ -266,7 +270,6 @@
             setNotifications(prev => [systemNotif, ...prev]);
           };
 
-          // Save to local storage whenever state changes
           React.useEffect(() => {
             localStorage.setItem('gift_of_strength_profiles', JSON.stringify(profiles));
           }, [profiles]);
@@ -277,7 +280,6 @@
 
           const currentProfile = profiles.find(p => p.id === activeProfileId) || profiles[0];
 
-          // Synthesis Sound Engine
           const playSound = (type) => {
             if (!soundEnabled) return;
             try {
@@ -334,8 +336,7 @@
               
               const newProfile = {
                 id: cleanUser.replace(/\s+/g, ''),
-                name: `${usernameInput.trim()} (Guest)`,
-                role: 'Adventurer',
+                name: `${usernameInput.trim()}`,
                 avatar: randomAsset.avatar,
                 petName: randomAsset.petName,
                 bgColor: randomAsset.bgColor,
@@ -371,9 +372,9 @@
             setSelectedExercise(exerciseName);
             // Dynamically assign target reps based on selected exercise
             let multiplier = 1;
-            if (exerciseName === 'Squats') multiplier = 1.2; // kids and parents can do a bit more squats
+            if (exerciseName === 'Squats') multiplier = 1.2;
             if (exerciseName === 'Sit Ups') multiplier = 1;
-            if (exerciseName === 'Lunges') multiplier = 0.8; // lunges are slightly harder
+            if (exerciseName === 'Lunges') multiplier = 0.8;
 
             setProfiles(prev => prev.map(p => {
               if (p.id === activeProfileId) {
@@ -481,7 +482,6 @@
             setNotifications(prev => [systemNotif, ...prev]);
           };
 
-          // Render Login Screen if unauthenticated
           if (!isLoggedIn) {
             return (
               <div className="min-h-screen bg-slate-950 flex flex-col justify-between p-4 relative overflow-hidden text-slate-100 font-sans">
@@ -544,7 +544,6 @@
             );
           }
 
-          // Main Interactive Layout after logging in
           return (
             <div className="min-h-screen bg-amber-50 text-slate-800 font-sans pb-12 transition-all fade-in">
               {celebration && (
@@ -580,7 +579,7 @@
                         Gift of Strength
                       </h1>
                       <p className="text-xs text-slate-500 mt-1">
-                        Welcome back, <span className="font-bold text-slate-700">{currentProfile.name.split(' ')[0]}</span>! You've got this, Champ!
+                        Welcome back, <span className="font-bold text-slate-700">{currentProfile.name}</span>! You've got this, Champ!
                       </p>
                     </div>
                   </div>
@@ -615,7 +614,6 @@
 
               <main className="max-w-4xl mx-auto px-4 mt-6">
                 
-                {/* 1. HOME SCREEN - Dashboard featuring 4 clean action cards */}
                 {currentView === 'home' && (
                   <div className="fade-in space-y-6">
                     {/* Profile Toggle Belt */}
@@ -628,7 +626,7 @@
                             onClick={() => handleProfileChange(p.id)}
                             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${p.id === activeProfileId ? 'bg-amber-500 text-white shadow-sm' : 'bg-white hover:bg-slate-100'}`}
                           >
-                            {p.avatar} {p.name.split(' ')[0]}
+                            {p.avatar} {p.name}
                           </button>
                         ))}
                       </div>
@@ -693,7 +691,7 @@
                         className="group bg-gradient-to-br from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-orange-600/50 flex flex-col justify-between min-h-[160px]"
                       >
                         <div className="absolute right-4 top-4 text-orange-100/30 group-hover:scale-110 transition-transform">
-                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"></path></svg>
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"></path></svg>
                         </div>
                         <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">📢</span>
                         <div>
@@ -708,7 +706,7 @@
                         className="group bg-gradient-to-br from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white p-6 rounded-3xl text-left shadow-lg hover:shadow-xl active:scale-[0.98] transition-all relative overflow-hidden border-b-8 border-pink-600/50 flex flex-col justify-between min-h-[160px]"
                       >
                         <div className="absolute right-4 top-4 text-pink-100/30 group-hover:scale-110 transition-transform">
-                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path></svg>
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z"></path></svg>
                         </div>
                         <span className="bg-white/20 p-2 rounded-2xl w-fit text-xl">❤️</span>
                         <div>
@@ -735,7 +733,7 @@
                   </div>
                 )}
 
-                {/* 1.5 SUB-VIEW: EXERCISE PATH (Selection Screen) */}
+                {}
                 {currentView === 'select_exercise' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -816,7 +814,7 @@
                   </div>
                 )}
 
-                {/* 2. SUB-VIEW: LOG EXERCISE (Interactive Movement Counter) */}
+                {}
                 {currentView === 'log' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -879,7 +877,7 @@
                   </div>
                 )}
 
-                {/* 3. SUB-VIEW: DAILY CHALLENGE (Cooperative goal) */}
+                {}
                 {currentView === 'challenge' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -939,7 +937,7 @@
                   </div>
                 )}
 
-                {/* 4. SUB-VIEW: MESS WITH FAM (Playful Chibi Nudges) */}
+                {}
                 {currentView === 'nudge' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -1031,7 +1029,7 @@
                   </div>
                 )}
 
-                {/* 5. SUB-VIEW: FRIENDS LIST (Streaks Connection Deck) */}
+                {}
                 {currentView === 'friends' && (
                   <div className="fade-in space-y-6">
                     <button 
@@ -1085,7 +1083,7 @@
                                         <span className="text-2xl bg-slate-100 p-1 rounded-lg">{user.avatar}</span>
                                         <div>
                                           <h5 className="text-xs font-bold text-slate-700">{user.name}</h5>
-                                          <p className="text-[10px] text-slate-400">{user.role} • Streak: {user.streak}🔥</p>
+                                          <p className="text-[10px] text-slate-400">Streak: {user.streak}🔥</p>
                                         </div>
                                       </div>
                                       <button 
@@ -1119,7 +1117,6 @@
                                   <div>
                                     <div className="flex items-center gap-2">
                                       <h4 className="font-extrabold text-slate-800 text-base leading-none">{p.name}</h4>
-                                      <span className="text-[10px] bg-slate-200/80 text-slate-600 py-0.5 px-2 rounded-md font-bold uppercase tracking-wider">{p.role}</span>
                                     </div>
                                     
                                     {/* Progression tier pill */}
